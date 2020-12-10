@@ -1,0 +1,18 @@
+@value offsetWidth: 60px;
+
+.menu {
+  width: 300px;
+}
+
+.menuOffset {
+  width: offsetWidth;
+}
+
+.menuClosed {
+  transform: translate3d(calc(100% - offsetWidth), 0px, 0px);
+}
+
+.menuClosed:hover {
+  transition-duration: 200ms;
+  transform: translate3d(calc(100% - offsetWidth - 6px), 0px, 0px);
+}
