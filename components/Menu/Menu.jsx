@@ -11,14 +11,14 @@ const Menu = ({children}) => {
 
   return (
     <div ref={ref} className={`${styles.menu} ${open ? '' : styles.menuClosed}
-    fixed flex right-0 h-full 
+    cursor-pointer fixed z-50 flex right-0 h-full 
     transition-all duration-500 ease 
     bg-black text-white`}
       onClick={() => !open && setOpen(true)}>
-      <button className="absolute outline-none cursor-pointer right-4 top-2 text-2xl"
+      <button className="absolute outline-none cursor-pointer right-4 top-2 text-2xl transform transition-transform hover:rotate-90"
       onClick={() => setOpen(x => !x)}>&times;</button>
       <div className={`${styles.menuOffset} p-4`}>
-        open
+        <img src="/ap.png" style={{ filter: 'invert(1)' }} className="transform transition-transform hover:scale-110 hover:rotate-90" alt="logo menu" />
       </div>
       <nav className="flex flex-col flex-grow p-4 pt-16">
         {children}
