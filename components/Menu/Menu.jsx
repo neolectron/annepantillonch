@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { React, useState, useRef } from "react";
 import { useClickAway, useKey } from 'react-use';
 
 import styles from './menu.module.css';

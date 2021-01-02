@@ -1,3 +1,4 @@
+import { React } from 'react';
 import { getPostList, getPostBySlug } from '../../lib/ghost';
 
 import Layout from '../../components/Layout/Layout';
