@@ -5,3 +5,12 @@
 html, body, #__next {
   height: 100%;
 }
+
+.hiddenscrollbar > div {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hiddenscrollbar > div::-webkit-scrollbar {
+  display: none;
+}

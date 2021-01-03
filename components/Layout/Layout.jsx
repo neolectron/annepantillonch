@@ -1,25 +1,27 @@
-import Head from 'next/head'; 
-import { useState } from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+
+import { React, /*useState*/ } from 'react';
 
 import Menu from '../Menu/Menu';
 
-const Layout = ({ title, children, column }) => {
+const Layout = ({ title, children }) => {
 
-  // const [menu, setMenu] = useState(false);
+  const pageTitle = title ? `- ${title}` : '- Artiste Peintre';
 
-  const toggleMenu = () => setMenu(val => !val);
   return (
-    <div id="layout-wrapper" className="h-full"> 
+    <div className="relative h-full"> 
       <Head>
-        <title>{title}</title>
-        <meta property="og:title" content={title} key="title" />
+        <title>{`Anne Pantillon ${pageTitle}`}</title>
+        <meta property="og:title" content={`Anne Pantillon ${pageTitle}`} key="title" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <button onClick={toggleMenu} >Menu</button> */}
-      <Menu width={280} >
-        <a id="home" className="menu-item" href="/">Home</a>
-        <a id="about" className="menu-item" href="/about">About</a>
+      <Menu width={280}>
+        <Link href="/"><a>Home</a></Link>
+        <Link href="/works"><a>Works</a></Link>
+        <Link href="/about"><a>About</a></Link>
       </Menu>
-      <main id="page-content" className="flex flex-col bg-gray-200 h-full p-1 md:p-10" style={{marginRight: 60}}>
+      <main className="overflow-y-auto bg-gray-200 h-full">
         {children}
       </main>
     </div>
