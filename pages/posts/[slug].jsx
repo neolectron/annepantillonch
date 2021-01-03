@@ -14,10 +14,6 @@ export async function getStaticPaths() {
 
   const postList = await getPostList();
   
-  console.log(postList
-    .filter(item => item.slug) // filter-out Pagination data
-    .map(item => ({ params: {slug: item.slug} })))
-
   return {
     paths: postList
       .filter(item => item.slug) // filter-out Pagination data
