@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import styles from './menu.module.css';
 
-const Menu = ({children}) => {
+const Menu = ({children, Bgtransparent}) => {
   const menuRef = useRef(null);
   const listRef = useRef(null);
 
@@ -25,7 +25,7 @@ const Menu = ({children}) => {
   useEffect(() => {
     stop();
     const {width, height} = listRef.current.getBoundingClientRect();
-    
+
     // open === null is here to check if the animation run for the first time
     if(isDesktop) {
       setSpring({ height: height, translate: (open ? 0 : width - 50), immediate: (open === null) });
@@ -39,16 +39,16 @@ const Menu = ({children}) => {
 
   return (
     <animated.div
-      className={`fixed z-50 top-0 right-0 flex flex-col
-      h-auto w-full 
+      className={`fixed z-50 top-0 right-0 flex flex-col h-auto w-full
       md:h-full md:w-72 md:border-l md:border-b-0
-      bg-transparent border-b border-white border-opacity-20 text-white`}
+      ${Bgtransparent ? 'bg-transparent text-white border-white' : 'bg-white text-black border-black' }
+      font-bold border-b border-opacity-20`}
       style={{ transform: spring.translate.interpolate(x => `translate3d(${x}px,0,0)`), backdropFilter: `blur(5px)` }}
       onClick={() => setOpen(!open)}
       ref={menuRef}
     >
       <div className="w-full flex justify-between p-2">
-        <img height="32px" width="34px" src="/ap.png" style={{ filter: 'invert(1)' }} alt="logo menu" />
+        <img height="32px" width="34px" src="/ap.png" style={{ filter: `${Bgtransparent ? 'invert(1)' : ''}` }} alt="logo menu" />
         <svg xmlns="http://www.w3.org/2000/svg" className="cursor-pointer" viewBox="0 0 32 32" width="32" height="32" focusable="false">
           <path stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path>
         </svg>
@@ -59,7 +59,7 @@ const Menu = ({children}) => {
           <nav className={`${styles.menuChildren} w-full flex flex-col text-xl select-none`}>
             {children}
           </nav>
-          <div className={`flex ${open ? '' : 'md:flex-col md:ml-0'} ml-12 md:mt-40 border-t border-white border-opacity-20 items-start justify-start`}>
+          <div className={`flex ${open ? '' : 'md:flex-col md:ml-0'} ml-12 md:mt-40 border-t border-opacity-20 items-start justify-start`}>
             <Link href="/#">
               <a className="m-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
@@ -97,7 +97,6 @@ const Menu = ({children}) => {
           </div>
         </div>
       </animated.div>
-
 
     </animated.div>
   );

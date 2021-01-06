@@ -5,7 +5,7 @@ import { React, /*useState*/ } from 'react';
 
 import Menu from '../Menu/Menu';
 
-const Layout = ({ title, children }) => {
+const Layout = ({ title, menuBgTransparent, children }) => {
 
   const pageTitle = title ? `- ${title}` : '- Artiste Peintre';
 
@@ -16,10 +16,10 @@ const Layout = ({ title, children }) => {
         <meta property="og:title" content={`Anne Pantillon ${pageTitle}`} key="title" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Menu width={280}>
-        <Link href="/"><a>Home</a></Link>
-        <Link href="/works"><a>Works</a></Link>
-        <Link href="/about"><a>About</a></Link>
+      <Menu Bgtransparent={menuBgTransparent} >
+        <Link href="/"><a># Home</a></Link>
+        <Link href="/works"><a># Works</a></Link>
+        <Link href="/about"><a># About</a></Link>
       </Menu>
       <main className="overflow-y-auto bg-gray-200 h-full">
         {children}

@@ -27,7 +27,7 @@ export default function Home() {
   const translate = x => `translateX(${x}px)`;
 
   return (
-    <Layout>
+    <Layout menuBgTransparent>
       <animated.div className="h-full bg-cover bg-center flex" style={{ backgroundImage: 'url("/technique.png")', backgroundSize: spring.backgroundSize }}>
         <div className="ml-8 mr-4 flex flex-col justify-center text-white">
           <animated.h1 style={{ opacity: first.opacity, transform: first.transform.interpolate(translate) }}
