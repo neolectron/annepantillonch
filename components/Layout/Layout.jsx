@@ -19,6 +19,7 @@ const Layout = ({ title, menuBgTransparent, children }) => {
       <Menu Bgtransparent={menuBgTransparent} >
         <Link href="/"><a># Home</a></Link>
         <Link href="/works"><a># Works</a></Link>
+        <Link href="/news"><a># News</a></Link>
         <Link href="/about"><a># About</a></Link>
       </Menu>
       <main className="overflow-y-auto bg-gray-200 h-full">
