@@ -1,8 +1,13 @@
 import Layout from '../components/Layout/Layout.jsx';
-import React from 'react';
-import { animated, config, useSpring, useTrail } from 'react-spring';
+import React, { useEffect, useState } from 'react';
+import { animated, config,  useTrail } from 'react-spring';
 
 export default function Home() {
+  const [isAnimated, set] = useState(false);
+  
+  useEffect(() => {
+    setTimeout(() => {set(true)}, 1000);
+  },[]);
 
   const [[first, second]] = useTrail(2, () => ({
     from: { opacity: 0, transform: -30 },
@@ -11,24 +16,15 @@ export default function Home() {
     config: config.molasses,
   }));
 
-  const [spring] = useSpring(() => ({
-    from: { backgroundSize: '100% 100%' },
-    to: async (next) => {
-      let reverse = 1;
-      while(true) {
-        await next({backgroundSize: reverse ? '125% 125%' : '100% 100%'});
-        reverse = !reverse;
-      }
-    },
-    delay: 1000,
-    config: {duration: 30000, reset: true}
-  }));
-
   const translate = x => `translateX(${x}px)`;
 
   return (
     <Layout menuBgTransparent>
-      <animated.div className="h-full bg-cover bg-center flex" style={{ backgroundImage: 'url("/technique.png")', backgroundSize: spring.backgroundSize }}>
+      <div className="relative h-full flex overflow-hidden">
+        <div style={{ backgroundImage: 'url("/technique.png")', transitionDuration: '30s'}}
+          className={`absolute w-full h-full pointer-events-none 
+          bg-cover bg-center transform transition-transform ease-linear ${isAnimated && 'scale-125'}`}>
+        </div>
         <div className="ml-8 mr-4 flex flex-col justify-center text-white">
           <animated.h1 style={{ opacity: first.opacity, transform: first.transform.interpolate(translate) }}
           className="opacity-0 text-5xl md:text-8xl font-bold px-4 border-b border-opacity-30 border-white">
@@ -39,7 +35,7 @@ export default function Home() {
             Artiste Peintre
           </animated.h2>
         </div>
-      </animated.div>
+      </div>
     </Layout>
   )
 }
