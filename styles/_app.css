@@ -14,3 +14,12 @@ html, body, #__next {
 .hiddenscrollbar > div::-webkit-scrollbar {
   display: none;
 }
+
+.bg-zoom {
+  background-size: 100%;
+  transition-property: background-size;
+}
+
+.bg-zoom:hover {
+  background-size: 110%;
+}
