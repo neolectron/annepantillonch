@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function Works({ tagList }) {
 
   return (
-    <Layout menuBgColor="bg-white">
+    <Layout>
       <div className={`p-8 h-full flex flex-wrap justify-between gap-4 w-full pt-12 md:pr-20`} >
         {tagList.map((tag) => (
           <Link key={tag.id} href={`/${tag.slug}`} >
