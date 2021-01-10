@@ -32,16 +32,13 @@ export async function getStaticProps() {
     return rawTags.filter( (t) => (!['works', 'news'].includes(t.slug)) );
   });
 
-  const imgs = await Promise.all(tags.map((tag) => {
-    if(tag.feature_image) {
-      return Promise.resolve(tag.feature_image);
-    }
-    else {
-      return getLastImageForTag(tag.slug)
-    }
-  }));
-
-
+  // if the tag does not have a feature image,
+  // we'll look for a feature image in posts (searching from last to first).
+  // if it still does not have one, we'll search for any images in a tagged post
+  // (from last to first still)
+  const imgs = await Promise.all(
+    tags.map(async (tag) => tag.feature_image || await getLastImageForTag(tag.slug) || '/technique.png')
+  );
   const tagsWithImages = tags.map((tag, index) => ({...tag, feature_image: imgs[index]}));
 
   return {
