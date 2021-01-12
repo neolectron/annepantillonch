@@ -1,18 +1,8 @@
 import Layout from '../components/Layout/Layout.jsx';
-import React, { useEffect, useState } from 'react';
-import { animated, config,  useTrail } from 'react-spring';
+import { useCallback } from 'react';
+import { animated, config, useTrail } from 'react-spring';
 
 export default function Home() {
-  const [isAnimated, setAnimated] = useState(false);
-  
-  useEffect(() => {
-    setTimeout(() => setAnimated(true), 1000);
-    const interval = setInterval(() => {
-      setAnimated(x => !x);
-    }, 21 * 1000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const [[first, second]] = useTrail(2, () => ({
     from: { opacity: 0, transform: -30 },
@@ -21,16 +11,15 @@ export default function Home() {
     config: config.molasses,
   }));
 
-  const translate = x => `translateX(${x}px)`;
-
+  const translate = useCallback(x => `translateX(${x}px)`);
+  console.log('render index')
+  
   return (
     <Layout menuBgTransparent>
       <div className="relative h-full flex overflow-hidden">
 
-        <div style={{ backgroundImage: 'url("/technique.png")', transitionDuration: '20s' }}
-          className={`absolute w-full h-full bg-cover pointer-events-none
-          transition-transform transform origin-right ease-linear
-          ${isAnimated ? 'scale-125' : 'scale-100'}`}>
+        <div style={{ backgroundImage: 'url("/technique.png")'}}
+          className={`absolute w-full h-full bg-cover bg-pulse pointer-events-none origin-right`}>
         </div>
 
         <div className="ml-8 mr-4 flex flex-col justify-center text-white">
