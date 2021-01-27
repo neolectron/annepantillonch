@@ -1,13 +1,9 @@
 import Head from 'next/head';
-import Link from 'next/link';
-
-import { React, /*useState*/ } from 'react';
-
-import Menu from '../Menu/Menu';
+import MenuContact from '../MenuContact/MenuContact.jsx';
 
 const Layout = ({ title, menuBgTransparent, children }) => {
 
-  const pageTitle = title ? `- ${title}` : '- Artiste Peintre';
+  const pageTitle = title ? `- ${title}` : '- Artiste Plasticienne';
 
   return (
     <div className="relative h-full"> 
@@ -16,15 +12,17 @@ const Layout = ({ title, menuBgTransparent, children }) => {
         <meta property="og:title" content={`Anne Pantillon ${pageTitle}`} key="title" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Menu Bgtransparent={menuBgTransparent} >
+      {/* <Menu Bgtransparent={menuBgTransparent} >
         <Link href="/"><a># Home</a></Link>
         <Link href="/works"><a># Works</a></Link>
         <Link href="/news"><a># News</a></Link>
-        <Link href="/about"><a># About</a></Link>
+        <a href="#" onClick={() => setOpen(x => !x)}># Contact</a>
       </Menu>
+      <Contact opened={isOpen} /> */}
       <main className="overflow-y-auto bg-gray-200 h-full">
         {children}
       </main>
+      <MenuContact menuBgTransparent={menuBgTransparent} />
     </div>
   );
 }
