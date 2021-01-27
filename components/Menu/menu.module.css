@@ -1,4 +1,9 @@
 .menuChildren a {
   @apply p-2;
   @apply ml-12;
+  transition: transform .2s;
+}
+
+.menuChildren a:hover {
+  transform: scale(1.1);
 }

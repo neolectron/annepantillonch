@@ -59,9 +59,9 @@ const Menu = ({children, Bgtransparent}) => {
           <nav className={`${styles.menuChildren} w-full flex flex-col text-xl select-none`}>
             {children}
           </nav>
-          <div className={`flex ${open ? '' : 'md:flex-col md:ml-0'} ml-14 md:mt-40 border-t border-opacity-20 items-start justify-start`}>
+          <div className={`flex ${open ? '' : 'md:flex-col md:ml-0'} ml-14 border-t border-opacity-20 items-start justify-start`}>
             <Link href="/#">
-              <a className="m-2">
+              <a className="m-2 transform hover:scale-110">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                   <path fill="currentColor" d={`M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761
                   2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11
@@ -73,7 +73,7 @@ const Menu = ({children, Bgtransparent}) => {
               </a>
             </Link>
             <Link href="/#">
-              <a className="m-2">
+              <a className="m-2 transform hover:scale-110">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
                   <path fill="currentColor" d={`M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919
                   4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149
