@@ -59,7 +59,7 @@ const Menu = ({children, Bgtransparent}) => {
           <nav className={`${styles.menuChildren} w-full flex flex-col text-xl select-none`}>
             {children}
           </nav>
-          <div className={`flex ${open ? '' : 'md:flex-col md:ml-0'} ml-12 md:mt-40 border-t border-opacity-20 items-start justify-start`}>
+          <div className={`flex ${open ? '' : 'md:flex-col md:ml-0'} ml-14 md:mt-40 border-t border-opacity-20 items-start justify-start`}>
             <Link href="/#">
               <a className="m-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
