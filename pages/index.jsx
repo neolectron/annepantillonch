@@ -12,11 +12,10 @@ export default function Home() {
   }));
 
   const translate = useCallback(x => `translateX(${x}px)`);
-  console.log('render index')
   
   return (
     <Layout menuBgTransparent>
-      <div className="relative h-full flex overflow-hidden">
+      <div className="relative h-screen flex overflow-hidden">
 
         <div style={{ backgroundImage: 'url("/technique.png")'}}
           className={`absolute w-full h-full bg-cover bg-pulse pointer-events-none origin-right`}>
