@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout.jsx';
-import { getLastImageForTag, getTagList } from '../lib/ghost.js';
+import { getLastImageForTag, getPageList, getTagList } from '../lib/ghost.js';
 import Link from 'next/link';
 
 export default function Works({ tagList }) {
@@ -25,12 +25,22 @@ export default function Works({ tagList }) {
   )
 }
 
+
+
+
+
+
 // Fetch necessary data for the blog post using params.slug
 export async function getStaticProps() {
 
-  const tags = await getTagList().then(async (rawTags) => {
-    return rawTags.filter( (t) => (!['works', 'news'].includes(t.slug)) );
-  });
+  const [pages, rawTags] = await Promise.all([getPageList(), getTagList()]);
+
+  // get All tags having a Page with the same name
+  // also exclude the 'news' tag
+  const tags = rawTags
+    .filter( (tag) => (
+      tag.slug !== 'news' && pages.map(p => p.slug).includes(tag.slug)
+    ));
 
   // if the tag does not have a feature image,
   // we'll look for a feature image in posts (searching from last to first).
