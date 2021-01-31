@@ -28,7 +28,7 @@ const Menu = ({children, Bgtransparent}) => {
 
     // open === null is here to check if the animation run for the first time
     if(isDesktop) {
-      setSpring({ height: height, translate: (open ? 0 : width - 50), immediate: (open === null) });
+      setSpring({ height: height, translate: (open ? 0 : width - 48), immediate: (open === null) });
     }
     else {
       setSpring({ height: (open ? height : 0), translate: 0, immediate: (open === null)});
@@ -47,8 +47,8 @@ const Menu = ({children, Bgtransparent}) => {
       onClick={() => setOpen(!open)}
       ref={menuRef}
     >
-      <div className="w-full flex justify-between p-2">
-        <img height="32px" width="34px" src="/ap.png" style={{ filter: `${Bgtransparent ? 'invert(1)' : ''}` }} alt="logo menu" />
+      <div className="w-full h-14 flex items-center justify-between p-2">
+        <img  width="34px" src="/ap.png" style={{ filter: `${Bgtransparent ? 'invert(1)' : ''}` }} alt="logo menu" />
         <svg xmlns="http://www.w3.org/2000/svg" className="cursor-pointer" viewBox="0 0 32 32" width="32" height="32" focusable="false">
           <path stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path>
         </svg>
