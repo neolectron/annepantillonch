@@ -4,6 +4,7 @@
 
 html, body, #__next {
   height: 100%;
+  scroll-snap-type: y proximity;
 }
 
 .hiddenscrollbar > div {
@@ -26,6 +27,14 @@ html, body, #__next {
 
 .bg-pulse {
   animation: pulse 25s linear 1s infinite alternate;
+}
+
+.snap-container {
+  scroll-snap-type: y mandatory;
+}
+
+.snap-start {
+  scroll-snap-align: start;
 }
 
 @keyframes pulse {

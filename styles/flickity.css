@@ -1,0 +1,20 @@
+/* hide disabled button */
+.flickity-button:disabled {
+  display: none;
+}
+
+/* align dots to the bottom, and make them take 100% width */
+.flickity-page-dots {
+  display: flex;
+  bottom: -4px;
+  height: 4px;
+}
+
+/* dots are lines */
+.flickity-page-dots .dot {
+  flex-grow: 1;
+  height: 4px;
+  margin: 0;
+  border-radius: 0;
+  transition: opacity 1s;
+}

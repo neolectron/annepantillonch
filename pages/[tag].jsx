@@ -1,22 +1,33 @@
 import Layout from '../components/Layout/Layout.jsx';
-import { React, } from 'react';
-import { getTagList, getPostListByTags } from '../lib/ghost';
-import PostCard from '../components/PostCard/PostCard.jsx';
+import { getTagList, getPostListByTags, getPageByTag } from '../lib/ghost';
+import Caroussel from '../components/Caroussel/Caroussel.jsx';
+import styles from '../styles/tag.module.css';
+import Link from 'next/link';
 
-
-export default function Tag({ postList, tag }) {
-
-
-
+export default function Tag({ postList, tag, page }) {
   return (
     <Layout title={`${tag} works`}>
-      <div>
-        <h1>Liste des posts du tag {tag} :</h1>
-        {
-          postList.map((post) => {
-            return (<PostCard key={post.slug} {...post}  />)
-          })
-        }
+      <div className="flex flex-col gap-14 mt-14 md:mt-0 md:mr-12">
+        <div className={`p-8`}>
+          <div className={styles.markdown} dangerouslySetInnerHTML={{ __html: page.html }}></div>
+        </div>
+        {postList.map((post) => (
+          <Caroussel key={post.id} imgs={post.imgs}>
+            <div className="snap-start h-full w-full flex flex-col justify-center items-center text-5xl">
+              <div className='p-14 flex flex-col justify-center items-center flex-grow'>
+                <div>{post.title}</div>
+                <div className="text-xl p-4">{post.description}</div>
+              </div>
+              <div className="pb-4 text-center w-full text-lg text-blue-600">
+                {post.tags.map(t => (
+                  <Link key={t.slug} href={`/${t.slug}`}>
+                    <a>#{t.slug}</a>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </Caroussel>
+        ))}
       </div>
     </Layout>
   )
@@ -27,25 +38,24 @@ export default function Tag({ postList, tag }) {
 export async function getStaticPaths() {
 
   const tags = await getTagList();
-  const usableTags = tags.filter((t) => (!['works', 'news'].includes(t.slug)));
 
   return { 
-    paths: usableTags.map((tag) => ({ params: { tag: tag.slug }}) ),
+    paths: tags.filter((tag) => tag !== 'news')
+      .map((tag) => ({ params: { tag: tag.slug } })),
     fallback: false
   }
 }
 
-// Fetch necessary data for the blog post using params.slug
+// Fetch necessary data for the blog post using params.tag
 export async function getStaticProps({ params }) {
 
-  const posts = await getPostListByTags(params.tag);
+  const [postList, page] = await Promise.all([getPostListByTags(params.tag), getPageByTag(params.tag)]);
 
   return {
     props: {
-      postList: [...posts],
+      postList,
+      page,
       tag: params.tag
     }
-  }
-
+  };
 }
-

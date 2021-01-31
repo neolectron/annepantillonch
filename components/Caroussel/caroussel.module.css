@@ -1,0 +1,14 @@
+.caroussel {
+  height: calc(100vh - 4px);
+  margin-bottom: 4px;
+}
+
+.carousselCaption {
+    flex-basis: 280px;
+}
+
+@media (max-width: 767px) {
+  .carousselCaption {
+    flex-basis: auto;
+  }
+}
