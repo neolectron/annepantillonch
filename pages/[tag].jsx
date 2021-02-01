@@ -1,7 +1,7 @@
 import Layout from '../components/Layout/Layout.jsx';
 import { getTagList, getPostListByTags, getPageByTag } from '../lib/ghost';
 import Caroussel from '../components/Caroussel/Caroussel.jsx';
-import styles from '../styles/tag.module.css';
+import styles from '../styles/markdown.module.css';
 import Link from 'next/link';
 
 export default function Tag({ postList, tag, page }) {
