@@ -1,7 +1,7 @@
 const Contact = () => {
   return (
     <div className={`flex-col flex mt-12
-    bg-black bg-opacity-40 overflow-hidden
+    bg-black bg-opacity-80 overflow-hidden
       md:h-full md:pr-12 md:mt-0 md:w-auto`}
     style={{ minWidth: '280px' }}>
 
