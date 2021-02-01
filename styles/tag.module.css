@@ -1,3 +1,24 @@
 .markdown h1 {
   @apply text-xl;
 }
+
+
+.markdown blockquote p {
+  position: relative;
+  padding-left: 8px;
+}
+
+.markdown blockquote p::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 4px;
+  border-radius: 2px;
+  background-color: #4f545c;
+}
+
+.markdown li::before {
+  content: '• ';
+}
