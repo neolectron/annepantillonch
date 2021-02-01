@@ -7,7 +7,7 @@ export default function Works({ tagList }) {
 
   return (
     <Layout>
-      <div className={`p-8 min-h-screen flex flex-wrap justify-between items-center gap-4 w-full pt-12 md:pr-20`}>
+      <div className={`p-8 min-h-screen flex flex-wrap justify-between items-center gap-4 w-full pt-16 md:pr-20`}>
         {tagList.map((tag) => (
           <Link key={tag.id} href={`/${tag.slug}`} >
             <a className={`h-48 flex justify-center items-center flex-grow 
