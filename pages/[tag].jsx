@@ -13,8 +13,8 @@ export default function Tag({ postList, tag, page }) {
         </div>}
         {postList.map((post) => (
           <Caroussel key={post.id} imgs={post.imgs}>
-            <div className="snap-start h-full w-full flex flex-col justify-center items-center text-5xl">
-              <div className='p-14 flex flex-col justify-center items-center flex-grow'>
+            <div className="snap-start h-full w-full flex flex-col justify-center items-center text-3xl md:text-5xl">
+              <div className='p-4 md:p-14 w-full flex flex-col justify-center items-center flex-grow'>
                 <div>{post.title}</div>
                 <div className="text-xl p-4">{post.description}</div>
               </div>
