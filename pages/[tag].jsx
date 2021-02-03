@@ -12,7 +12,7 @@ export default function Tag({ postList, tag, page }) {
           <div className={styles.markdown} dangerouslySetInnerHTML={{ __html: page.html }}></div>
         </div>}
         {postList.map((post) => (
-          <Caroussel key={post.id} postId={post.id} imgs={post.imgs} >
+          <Caroussel key={post.id} post={post}>
             <div id={`${post.id}-0`} className="snap-start h-full w-full flex flex-col justify-center items-center text-3xl md:text-5xl">
               <div className='p-4 md:p-14 w-full flex flex-col justify-center items-center flex-grow'>
                 <div>{post.title}</div>
