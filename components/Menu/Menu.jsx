@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useClickAway, useKey, useMedia } from 'react-use';
 import { animated, useSpring, config } from 'react-spring';
-import Link from 'next/link';
 
 import styles from './menu.module.css';
 
