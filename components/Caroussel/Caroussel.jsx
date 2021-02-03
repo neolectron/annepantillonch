@@ -1,7 +1,7 @@
 import Flickity from 'react-flickity-component';
 import styles from './caroussel.module.css';
 
-const Caroussel = ({imgs, children, appendChildren = false}) => (
+const Caroussel = ({imgs, children}) => (
   <Flickity
     static
     className={`${styles.caroussel} w-full snap-start bg-white pt-14 md:pt-0`}
@@ -15,7 +15,7 @@ const Caroussel = ({imgs, children, appendChildren = false}) => (
     // disableImagesLoaded={false} // default false
     // reloadOnUpdate // default false
   >
-    {!appendChildren && children}
+    {children}
     {imgs.map((img, i) => (
       <div key={i} className="h-full w-full flex justify-center items-center md:items-stretch flex-col md:flex-row">
 
@@ -30,7 +30,6 @@ const Caroussel = ({imgs, children, appendChildren = false}) => (
 
       </div>
     ))}
-    {appendChildren && children}
   </Flickity>
 );
 
