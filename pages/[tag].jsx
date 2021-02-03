@@ -8,9 +8,9 @@ export default function Tag({ postList, tag, page }) {
   return (
     <Layout title={`${tag} works`}>
       <div className="flex flex-col gap-14 mt-14 md:mt-0 md:mr-12">
-        <div className={`p-8`}>
+        {page && <div className={`p-8`}>
           <div className={styles.markdown} dangerouslySetInnerHTML={{ __html: page.html }}></div>
-        </div>
+        </div>}
         {postList.map((post) => (
           <Caroussel key={post.id} imgs={post.imgs}>
             <div className="snap-start h-full w-full flex flex-col justify-center items-center text-5xl">
@@ -21,7 +21,7 @@ export default function Tag({ postList, tag, page }) {
               <div className="pb-4 text-center w-full text-lg text-blue-600">
                 {post.tags.map(t => (
                   <Link key={t.slug} href={`/${t.slug}`}>
-                    <a>#{t.slug}</a>
+                    <a>#{t.slug} </a>
                   </Link>
                 ))}
               </div>
@@ -51,10 +51,12 @@ export async function getStaticProps({ params }) {
 
   const [postList, page] = await Promise.all([getPostListByTags(params.tag), getPageByTag(params.tag)]);
 
+
+
   return {
     props: {
       postList,
-      page,
+      page: page || null,
       tag: params.tag
     }
   };
