@@ -2,15 +2,16 @@ const Contact = () => {
   return (
     <div className={`flex-col flex mt-12
     bg-black bg-opacity-80 overflow-hidden
-      md:h-full md:pr-12 md:mt-0 md:w-auto`}
-    style={{ minWidth: '280px' }}>
+      md:h-full md:mr-12 md:mt-0 md:w-auto`}
+    style={{ minWidth: '400px' }}>
 
       <div className={`h-32 hidden md:block bg-center bg-cover bg-no-repeat bg-pulse duration-1000 origin-left`}
         style={{ backgroundImage: `url(/profil.jpeg)`, animationIterationCount: 1, animationFillMode: 'forwards'}}>
       </div>
 
-      <div className="h-full flex flex-col items-center justify-center p-4 pt-8 text-white">
-        <a className="block bg-transparent bg-gray-900 rounded-sm hover:bg-white hover:text-gray-900 font-bold py-2 px-4"
+      <div className="h-full flex flex-col items-center justify-center p-4 pt-8 text-gray-800">
+        <a className={`block rounded-sm font-bold py-2 px-4 transform transition-transform
+        bg-gray-200 hover:bg-white hover:scale-105 hover:text-gray-900`}
           href="mailto:annepantillon@gmail.com" target="_blank">
           Contact
         </a>
