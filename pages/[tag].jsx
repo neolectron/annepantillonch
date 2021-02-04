@@ -1,5 +1,5 @@
 import Layout from '../components/Layout/Layout.jsx';
-import { getTagList, getPostListByTags, getPageByTag } from '../lib/ghost';
+import { getTagList, getPostListByTags, getPageBySlug } from '../lib/ghost';
 import Caroussel from '../components/Caroussel/Caroussel.jsx';
 import styles from '../styles/markdown.module.css';
 import Link from 'next/link';
@@ -40,7 +40,7 @@ export async function getStaticPaths() {
   const tags = await getTagList();
 
   return { 
-    paths: tags.filter((tag) => tag !== 'news')
+    paths: tags.filter((tag) => tag.slug !== 'news')
       .map((tag) => ({ params: { tag: tag.slug } })),
     fallback: false
   }
@@ -49,9 +49,7 @@ export async function getStaticPaths() {
 // Fetch necessary data for the blog post using params.tag
 export async function getStaticProps({ params }) {
 
-  const [postList, page] = await Promise.all([getPostListByTags(params.tag), getPageByTag(params.tag)]);
-
-
+  const [postList, page] = await Promise.all([getPostListByTags(params.tag), getPageBySlug(params.tag)]);
 
   return {
     props: {
