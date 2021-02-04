@@ -1,8 +1,10 @@
 import Layout from '../components/Layout/Layout.jsx';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { animated, config, useTrail } from 'react-spring';
+import { getPageBySlug } from '../lib/ghost.js';
+import Flickity from 'react-flickity-component';
 
-export default function Home() {
+export default function Home({ page }) {
 
   const [[first, second]] = useTrail(2, () => ({
     from: { opacity: 0, transform: -30 },
@@ -12,14 +14,32 @@ export default function Home() {
   }));
 
   const translate = useCallback(x => `translateX(${x}px)`);
-  
+
+  console.log(page.imgs)
+
   return (
     <Layout menuBgTransparent>
+      <div className="block absolute h-screen w-screen top-0 left-0">
+        <Flickity static className="h-full w-full"
+        options={{
+          draggable: false,
+          fade: true,
+          autoPlay: true,
+          setGallerySize: false,
+          prevNextButtons: false,
+          pageDots: false,
+          imagesLoaded: true,
+        }}>
+          {page.imgs.map((img) => 
+            <div key={img.src} className="w-full h-full overflow-hidden">
+              <div style={{ backgroundImage: `url(${img.src})` }}
+                className={`w-full h-full bg-cover bg-pulse origin-right`}>
+              </div>
+            </div>
+          )}
+        </Flickity>
+      </div>
       <div className="relative h-screen flex overflow-hidden">
-
-        <div style={{ backgroundImage: 'url("/technique.png")'}}
-          className={`absolute w-full h-full bg-cover bg-pulse pointer-events-none origin-right`}>
-        </div>
 
         <div className="ml-8 mr-4 flex flex-col justify-center text-white">
           <animated.h1 style={{ opacity: first.opacity, transform: first.transform.interpolate(translate) }}
@@ -35,4 +55,14 @@ export default function Home() {
       </div>
     </Layout>
   )
+}
+
+// Fetch necessary data for the current page
+export async function getStaticProps() {
+
+  const page = await getPageBySlug('accueil');
+
+  return {
+    props: { page }
+  };
 }

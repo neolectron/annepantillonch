@@ -12,7 +12,7 @@ const Layout = ({ title, menuBgTransparent, children }) => {
         <meta property="og:title" content={`Anne Pantillon ${pageTitle}`} key="title" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-gray-200 min-h-full">
+      <main className="relative bg-gray-200 min-h-full">
         {children}
       </main>
       <MenuContact menuBgTransparent={menuBgTransparent} />

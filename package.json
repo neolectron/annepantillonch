@@ -10,6 +10,9 @@
   "dependencies": {
     "@tryghost/content-api": "^1.4.10",
     "flickity": "^2.2.2",
+    "flickity-fade": "^1.0.0",
+    "flickity-fullscreen": "^1.1.1",
+    "flickity-hash": "^1.0.3",
     "next": "10.0.3",
     "node-html-parser": "^1.4.9",
     "react": "17.0.1",
