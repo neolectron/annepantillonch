@@ -1,8 +1,11 @@
 import Layout from '../components/Layout/Layout.jsx';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { animated, config, useTrail } from 'react-spring';
-import { getPageBySlug, getPostListByTags } from '../lib/ghost.js';
+import { getPageBySlug, getPostListFeatured } from '../lib/ghost.js';
 import Flickity from 'react-flickity-component';
+import styles from '../styles/ghost-post.module.css';
+import overrides from '../styles/ghost-post-overrides.module.css';
+
 
 export default function Home({ page, news }) {
 
@@ -51,14 +54,16 @@ export default function Home({ page, news }) {
             Artiste Plasticienne 
           </animated.h2>
 
-          {news && <div 
-            className={`text-xl border-white border bg-white bg-opacity-30
-            p-8 my-14 overflow-hidden overflow-ellipsis
-            transition-opacity opacity-30 hover:opacity-100
-            hover:text-black hover:bg-opacity-70
-            cursor-pointer`}
-            style={{maxWidth: 600,}}
-            dangerouslySetInnerHTML={{__html: news.html}}>
+          {news && 
+            <div className={`border-white border bg-white bg-opacity-30
+              p-8 my-14 overflow-hidden overflow-ellipsis
+              transition-opacity opacity-30 hover:opacity-100
+              hover:text-black hover:bg-opacity-70 cursor-pointer`}>
+            <div 
+              className={`${styles['post-full-content']} ${overrides['post-full-content']}`}
+              style={{maxWidth: 600,}}
+              dangerouslySetInnerHTML={{__html: news.html}}>
+            </div>
           </div>}
 
         </div>
@@ -71,7 +76,7 @@ export default function Home({ page, news }) {
 export async function getStaticProps() {
 
   const page = await getPageBySlug('accueil');
-  const [ news ] = await getPostListByTags('featured');
+  const [news] = await getPostListFeatured();
 
   return {
     props: { 
