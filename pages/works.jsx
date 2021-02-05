@@ -37,12 +37,13 @@ export default function Works({ tagList }) {
 export async function getStaticProps() {
 
   const [pages, rawTags] = await Promise.all([getPageList(), getTagList()]);
-
   // get All tags having a Page with the same name
   // also exclude the 'news' tag
+  // and pagination data in the "meta" property,
+  // because tag.slug is undefined
   const tags = rawTags
     .filter( (tag) => (
-      tag.slug !== 'news' && pages.map(p => p.slug).includes(tag.slug)
+      tag.slug && tag.slug !== 'news' && pages.map(p => p.slug).includes(tag.slug)
     ));
 
   // if the tag does not have a feature image,
@@ -50,7 +51,7 @@ export async function getStaticProps() {
   // if it still does not have one, we'll search for any images in a tagged post
   // (from last to first still)
   const imgs = await Promise.all(
-    tags.map(async (tag) => tag.feature_image || await getLastImageForTag(tag.slug) || '/technique.png')
+    tags.map(async (tag) => tag.feature_image || getLastImageForTag(tag.slug) || '/technique.png')
   );
   const tagsWithImages = tags.map((tag, index) => ({...tag, feature_image: imgs[index]}));
 
