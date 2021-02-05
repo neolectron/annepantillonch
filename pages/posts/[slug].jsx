@@ -2,11 +2,15 @@ import { getPostList, getPostBySlug } from '../../lib/ghost';
 
 import Layout from '../../components/Layout/Layout.jsx';
 import RichContent from '../../components/RichContent/RichContent.jsx';
+import Button from '../../components/Button/Button.jsx';
 
-const Post = ({ postData }) => (
-  <Layout column title={`Anne Pantillon - ${postData.title}`}>
-    <div className="flex flex-col gap-14 mt-14 md:mt-0 md:mr-12">
-      <div className="p-8"><RichContent post={postData} /></div>
+const Post = ({ post }) => (
+  <Layout column title={`Anne Pantillon - ${post.title}`}>
+    <div className="p-8 mt-14 md:mt-0 md:mr-12">
+      <Button asLink href="/" > &lt; Accueil </Button>
+      <div className="flex flex-col gap-14">
+        <div className="p-8"><RichContent post={post} /></div>
+      </div>
     </div>
   </Layout>
 );
@@ -30,11 +34,7 @@ export async function getStaticProps({ params }) {
   const post = await getPostBySlug(params.slug);
 
   return {
-    props: {
-      postData : {
-        ...post,
-      }
-    }
+    props: { post }
   }
 
 }

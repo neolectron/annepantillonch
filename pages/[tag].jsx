@@ -2,13 +2,16 @@ import { getTagList, getPostListByTags, getPageBySlug } from '../lib/ghost';
 import Layout from '../components/Layout/Layout.jsx';
 import Caroussel from '../components/Caroussel/Caroussel.jsx';
 import RichContent from '../components/RichContent/RichContent.jsx';
+import Button from '../components/Button/Button.jsx';
 import Link from 'next/link';
 
 export default function Tag({ postList, tag, page }) {
+  console.log(page)
   return (
     <Layout title={`${tag} works`}>
-      <div className="flex flex-col gap-14 mt-14 md:mt-0 md:mr-12">
-        {page && <div className="p-8"><RichContent post={page} /></div>}
+      <div className="p-8 flex flex-col gap-14 mt-14 md:mt-0 md:mr-12">
+        <div className="px-8"><Button asLink href="/works" > &lt; Works </Button></div>
+        {page && page.html && <div className="px-8"><RichContent post={page} /></div>}
         {postList.map((post) => (
           <Caroussel key={post.id} post={post}>
             <div id={`${post.id}-0`} className="snap-start h-full w-full flex flex-col justify-center items-center text-3xl md:text-5xl">

@@ -28,6 +28,7 @@
 
 .post-full-content a {
   @apply text-blue-600;
+  @apply p-2;
 }
 
 .post-full-content a:hover {
