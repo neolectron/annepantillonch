@@ -5,6 +5,7 @@
 html, body, #__next {
   height: 100%;
   scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
 }
 
 .hiddenscrollbar > div {
