@@ -1,10 +1,10 @@
 import Layout from '../components/Layout/Layout.jsx';
+import RichContent from '../components/RichContent/RichContent.jsx';
 import { useCallback } from 'react';
 import { animated, config, useTrail } from 'react-spring';
 import { getPageBySlug, getPostListFeatured } from '../lib/ghost.js';
 import Flickity from 'react-flickity-component';
-import styles from '../styles/ghost-post.module.css';
-import overrides from '../styles/ghost-post-overrides.module.css';
+import Link from 'next/link';
 
 
 export default function Home({ page, news }) {
@@ -33,11 +33,11 @@ export default function Home({ page, news }) {
           imagesLoaded: true,
         }}>
           {page.imgs.map((img) => 
-              <div key={img.src} className="w-full h-full overflow-hidden">
-                <div style={{ backgroundImage: `url(${img.src})` }}
-                  className={`w-full h-full bg-cover bg-pulse origin-right`}>
-                </div>
+            <div key={img.src} className="w-full h-full overflow-hidden">
+              <div style={{ backgroundImage: `url(${img.src})` }}
+                className={`w-full h-full bg-cover bg-pulse origin-right`}>
               </div>
+            </div>
           )}
         </Flickity>
       </div>
@@ -55,16 +55,15 @@ export default function Home({ page, news }) {
           </animated.h2>
 
           {news && 
-            <div className={`border-white border bg-white bg-opacity-30
+            <Link href={`/posts/${news.slug}`} >
+              <a className={`block border-white border bg-white bg-opacity-30
               p-8 my-14 overflow-hidden overflow-ellipsis
               transition-opacity opacity-30 hover:opacity-100
-              hover:text-black hover:bg-opacity-70 cursor-pointer`}>
-            <div 
-              className={`${styles['post-full-content']} ${overrides['post-full-content']}`}
-              style={{maxWidth: 600,}}
-              dangerouslySetInnerHTML={{__html: news.html}}>
-            </div>
-          </div>}
+              hover:bg-opacity-70 hover:text-black cursor-pointer`}>
+                <RichContent post={news} />
+              </a>
+            </Link>
+          }
 
         </div>
       </div>

@@ -1,11 +1,13 @@
-import { React } from 'react';
 import { getPostList, getPostBySlug } from '../../lib/ghost';
 
-import Layout from '../../components/Layout/Layout';
+import Layout from '../../components/Layout/Layout.jsx';
+import RichContent from '../../components/RichContent/RichContent.jsx';
 
 const Post = ({ postData }) => (
   <Layout column title={`Anne Pantillon - ${postData.title}`}>
-    <p>{postData.plaintext}</p>
+    <div className="flex flex-col gap-14 mt-14 md:mt-0 md:mr-12">
+      <div className="p-8"><RichContent post={postData} /></div>
+    </div>
   </Layout>
 );
 

@@ -1,18 +1,14 @@
-import Layout from '../components/Layout/Layout.jsx';
 import { getTagList, getPostListByTags, getPageBySlug } from '../lib/ghost';
+import Layout from '../components/Layout/Layout.jsx';
 import Caroussel from '../components/Caroussel/Caroussel.jsx';
-import styles from '../styles/ghost-post.module.css';
-import overrides from '../styles/ghost-post-overrides.module.css';
+import RichContent from '../components/RichContent/RichContent.jsx';
 import Link from 'next/link';
 
 export default function Tag({ postList, tag, page }) {
   return (
     <Layout title={`${tag} works`}>
       <div className="flex flex-col gap-14 mt-14 md:mt-0 md:mr-12">
-        {page && <div className={`p-8`}>
-          <div className={`${styles['post-full-content']} ${overrides['post-full-content']}`} 
-          dangerouslySetInnerHTML={{ __html: page.html }}></div>
-        </div>}
+        {page && <div className="p-8"><RichContent post={page} /></div>}
         {postList.map((post) => (
           <Caroussel key={post.id} post={post}>
             <div id={`${post.id}-0`} className="snap-start h-full w-full flex flex-col justify-center items-center text-3xl md:text-5xl">
@@ -31,8 +27,7 @@ export default function Tag({ postList, tag, page }) {
           </Caroussel>
         ))}
 
-        <div className={`mb-32 flex justify-center items-center
-        `}>
+        <div className={`mb-32 flex justify-center items-center`}>
           <svg onClick={() => scrollTo({ top: 0, behavior: 'smooth' })} xmlns="http://www.w3.org/2000/svg"
           width="100" height="50" viewBox="0 0 240.835 240.835"
           className={`cursor-pointer transition-transform transform hover:-translate-y-2`} >
