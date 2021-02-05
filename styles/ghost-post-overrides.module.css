@@ -1,0 +1,82 @@
+/* fix background color */
+.post-full-content {
+  @apply bg-transparent;
+  @apply p-0;
+}
+
+/* fix weird hr */
+.post-full-content hr::after {
+  @apply hidden;
+}
+
+/* fix sizes and fonts sizes */
+.post-full-content h2 {
+  @apply mb-14;
+  @apply text-3xl;
+
+}
+
+.post-full-content h3 {
+  @apply mb-7;
+  @apply text-xl;
+}
+
+.post-full-content p {
+  @apply my-4;
+  @apply text-base;
+}
+
+.post-full-content a {
+  @apply text-blue-600;
+}
+
+.post-full-content a:hover {
+  @apply text-blue-600;
+  @apply underline;
+}
+
+.post-full-content blockquote {
+  @apply mb-0;
+  @apply text-lg;
+}
+
+.post-full-content figure {
+  @apply w-min;
+  @apply m-0;
+  @apply border;
+  @apply border-gray-300;
+  @apply rounded-sm;
+  @apply bg-white;
+  @apply flex;
+  @apply flex-col;
+  @apply justify-center;
+  @apply items-start;
+}
+
+.post-full-content figure figcaption {
+  @apply text-base;
+  @apply m-1;
+}
+
+.post-full-content figure img {
+  @apply h-full;
+  @apply object-contain;
+  @apply m-0;
+}
+
+.post-full-content figure iframe {
+  @apply h-full;
+  @apply w-auto;
+  @apply m-0 !important;
+}
+
+@media (min-width: 768px) {
+  .post-full-content figure iframe {
+    width: 560px;
+    height: 340px;
+  }
+}
+
+.post-full-content iframe {
+  @apply m-0 !important;
+}

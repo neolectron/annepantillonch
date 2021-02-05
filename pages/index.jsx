@@ -3,7 +3,6 @@ import { useCallback, useEffect } from 'react';
 import { animated, config, useTrail } from 'react-spring';
 import { getPageBySlug, getPostListByTags } from '../lib/ghost.js';
 import Flickity from 'react-flickity-component';
-import styles from '../styles/markdown.module.css';
 
 export default function Home({ page, news }) {
 
@@ -53,7 +52,7 @@ export default function Home({ page, news }) {
           </animated.h2>
 
           {news && <div 
-            className={`${styles.markdown} text-xl border-white border bg-white bg-opacity-30
+            className={`text-xl border-white border bg-white bg-opacity-30
             p-8 my-14 overflow-hidden overflow-ellipsis
             transition-opacity opacity-30 hover:opacity-100
             hover:text-black hover:bg-opacity-70

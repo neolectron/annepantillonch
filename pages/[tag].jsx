@@ -1,7 +1,8 @@
 import Layout from '../components/Layout/Layout.jsx';
 import { getTagList, getPostListByTags, getPageBySlug } from '../lib/ghost';
 import Caroussel from '../components/Caroussel/Caroussel.jsx';
-import styles from '../styles/markdown.module.css';
+import styles from '../styles/ghost-post.module.css';
+import overrides from '../styles/ghost-post-overrides.module.css';
 import Link from 'next/link';
 
 export default function Tag({ postList, tag, page }) {
@@ -9,7 +10,8 @@ export default function Tag({ postList, tag, page }) {
     <Layout title={`${tag} works`}>
       <div className="flex flex-col gap-14 mt-14 md:mt-0 md:mr-12">
         {page && <div className={`p-8`}>
-          <div className={styles.markdown} dangerouslySetInnerHTML={{ __html: page.html }}></div>
+          <div className={`${styles['post-full-content']} ${overrides['post-full-content']}`} 
+          dangerouslySetInnerHTML={{ __html: page.html }}></div>
         </div>}
         {postList.map((post) => (
           <Caroussel key={post.id} post={post}>
