@@ -6,7 +6,6 @@ import Button from '../components/Button/Button.jsx';
 import Link from 'next/link';
 
 export default function Tag({ postList, tag, page }) {
-  console.log(page)
   return (
     <Layout title={`${tag} works`}>
       <div className="flex flex-col gap-14 mt-14 md:mt-0 md:mr-12">
