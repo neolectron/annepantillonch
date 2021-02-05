@@ -9,8 +9,8 @@ export default function Tag({ postList, tag, page }) {
   console.log(page)
   return (
     <Layout title={`${tag} works`}>
-      <div className="p-8 flex flex-col gap-14 mt-14 md:mt-0 md:mr-12">
-        <div className="px-8"><Button asLink href="/works" > &lt; Works </Button></div>
+      <div className="flex flex-col gap-14 mt-14 md:mt-0 md:mr-12">
+        <div className="px-8 mt-1"><Button asLink href="/works" > &lt; Works </Button></div>
         {page && page.html && <div className="px-8"><RichContent post={page} /></div>}
         {postList.map((post) => (
           <Caroussel key={post.id} post={post}>
