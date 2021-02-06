@@ -24,6 +24,8 @@
 .post-full-content p {
   @apply my-4;
   @apply text-base;
+  @apply min-w-0;
+  max-width: 700px;
 }
 
 .post-full-content a {
