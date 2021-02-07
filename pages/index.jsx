@@ -67,7 +67,7 @@ export default function Home({ page, news }) {
         <a.a style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }} 
         className="hidden md:block z-10 absolute bottom-14 right-14 py-2 px-4 cursor-pointer">
           <div className={`flex items-center 
-          text-2xl text-gray-300 border-b border-white border-opacity-30
+          text-3xl text-gray-300 border-b border-white border-opacity-30
           transform transition-transform hover:scale-105 `}>
             Explorez mes oeuvres
             <svg className="mx-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
