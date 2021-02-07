@@ -38,7 +38,7 @@ const Menu = ({children, Bgtransparent}) => {
 
   return (
     <animated.div
-      className={`fixed top-0 right-0 flex flex-col h-auto w-full
+      className={`z-20 fixed top-0 right-0 flex flex-col h-auto w-full
       md:h-full md:w-72 md:border-l md:border-b-0
       ${Bgtransparent ? 'bg-transparent text-white border-white' : 'bg-white text-black border-black' }
       font-bold border-b border-opacity-20`}

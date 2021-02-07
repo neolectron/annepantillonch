@@ -8,7 +8,7 @@ import Link from 'next/link';
 export default function Tag({ postList, tag, page }) {
   return (
     <Layout title={`${tag} works`}>
-      <div className="flex flex-col gap-14 mt-14 md:mt-0 md:mr-12">
+      <div className="flex flex-col gap-14">
         <div className="px-8 mt-1"><Button asLink href="/works" > &lt; Works </Button></div>
         {page && page.html && <div className="px-8"><RichContent post={page} /></div>}
         {postList.map((post) => (

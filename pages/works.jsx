@@ -6,8 +6,8 @@ import Link from 'next/link';
 export default function Works({ tagList }) {
 
   return (
-    <Layout>
-      <div className="flex text-5xl font-bold justify-center items-center h-28">
+    <Layout title="works">
+      <div className="h-28 flex justify-center items-center text-5xl font-bold">
         Works
       </div>
       <div className={`px-8 pb-8 min-h-screen flex flex-wrap justify-between items-center gap-4 w-full md:pr-20`}>

@@ -1,7 +1,7 @@
 import Layout from '../components/Layout/Layout.jsx';
 import RichContent from '../components/RichContent/RichContent.jsx';
 import { useCallback } from 'react';
-import { animated, config, useTrail } from 'react-spring';
+import { a, config, useTrail } from 'react-spring';
 import { getPageBySlug, getPostListFeatured } from '../lib/ghost.js';
 import Flickity from 'react-flickity-component';
 import Link from 'next/link';
@@ -19,9 +19,9 @@ export default function Home({ page, news }) {
   const translate = useCallback(x => `translateX(${x}px)`);
 
   return (
-    <Layout menuBgTransparent>
+    <Layout menuBgTransparent >
 
-      <div className="block fixed h-screen w-screen top-0 left-0">
+      <div className="z-0 pointer-events-none fixed h-screen w-screen top-0 left-0">
         <Flickity static className="h-full w-full"
         options={{
           draggable: false,
@@ -42,31 +42,27 @@ export default function Home({ page, news }) {
         </Flickity>
       </div>
 
-      <div className="relative flex">
-        <div className="ml-8 mr-4 flex flex-col justify-center items-center text-white">
+      <div className="z-10 px-2 md:px-10 flex-grow flex flex-col justify-center items-start text-white">
+        <a.h1 style={{ marginTop: '25%', opacity: first.opacity, transform: first.transform.interpolate(translate) }}
+          className="opacity-0 text-5xl md:text-8xl font-bold px-4 border-b border-opacity-30 border-white">
+          Anne Pantillon
+        </a.h1>
+        <a.h2 style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }}
+          className="opacity-0 text-2xl text-gray-300 shadow-xl px-4">
+          Artiste Plasticienne 
+        </a.h2>
 
-          <animated.h1 style={{ marginTop: '50%', opacity: first.opacity, transform: first.transform.interpolate(translate) }}
-            className="opacity-0 text-5xl md:text-8xl font-bold px-4 border-b border-opacity-30 border-white">
-            Anne Pantillon
-          </animated.h1>
-          <animated.h2 style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }}
-            className="opacity-0 text-2xl text-gray-300 shadow-xl px-4">
-            Artiste Plasticienne 
-          </animated.h2>
-
-          {news && 
-            <Link href={`/posts/${news.slug}`} >
-              <a className={`block border-white border bg-white bg-opacity-30
-              p-8 my-14 overflow-hidden overflow-ellipsis
-              transition-opacity opacity-30 hover:opacity-100
-              hover:bg-opacity-70 hover:text-black cursor-pointer`}>
-                <RichContent post={news} />
-              </a>
-            </Link>
-          }
-
-        </div>
+        {news && <Link href={`/posts/${news.slug}`} >
+          <a className={`p-4 my-14 border border-white bg-white
+          bg-opacity-70 md:bg-opacity-30 hover:bg-opacity-70 
+          text-black md:text-white hover:text-black
+          transition-opacity md:opacity-30 hover:opacity-100`}
+          >
+            <RichContent post={news} />
+          </a>
+        </Link>}
       </div>
+      
     </Layout>
   )
 }

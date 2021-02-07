@@ -1,5 +1,6 @@
 import '../styles/_app.css';
-import '../node_modules/flickity/dist/flickity.min.css';
+import 'flickity/css/flickity.css';
+import 'flickity-fullscreen/fullscreen.css';
 import '../styles/flickity.css';
 
 function MyApp({ Component, pageProps }) {

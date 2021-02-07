@@ -18,3 +18,14 @@
   border-radius: 0;
   transition: opacity 1s;
 }
+
+/* on fullscreen */
+.flickity-enabled.is-fullscreen {
+  z-index: 30;
+  background-color: #fff;
+  padding-bottom: 0;
+}
+
+.flickity-enabled.is-fullscreen .flickity-page-dots {
+  display: none;
+}

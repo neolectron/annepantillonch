@@ -11,9 +11,8 @@
 
 /* fix sizes and fonts sizes */
 .post-full-content h2 {
-  @apply mb-14;
+  @apply mb-10;
   @apply text-3xl;
-
 }
 
 .post-full-content h3 {
@@ -44,7 +43,7 @@
 }
 
 .post-full-content figure {
-  @apply w-min;
+  @apply w-max;
   @apply m-0;
   @apply border;
   @apply border-gray-300;
