@@ -43,7 +43,7 @@
 }
 
 .post-full-content figure {
-  @apply w-max;
+  max-width: fit-content;
   @apply m-0;
   @apply border;
   @apply border-gray-300;
