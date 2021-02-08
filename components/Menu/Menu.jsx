@@ -19,8 +19,6 @@ const Menu = ({children, Bgtransparent}) => {
     config: config.stiff
   }));
 
-  // console.log(`we're on ${isDesktop ? 'desktop':'mobile'}, and menu is ${open ? 'open' : 'closed'}`);
-
   useEffect(() => {
     stop();
     const {width, height} = listRef.current.getBoundingClientRect();
