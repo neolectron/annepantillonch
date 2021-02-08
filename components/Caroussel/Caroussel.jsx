@@ -4,8 +4,7 @@ import Button from '../Button/Button.jsx';
 import ShareButton from '../ShareButton/ShareButton.jsx';
 
 const Caroussel = ({ post, children}) => {
-  const isServer = typeof window === 'undefined';
-  
+
   return (
     <Flickity
       static
@@ -15,7 +14,6 @@ const Caroussel = ({ post, children}) => {
         lazyLoad: 3, 
         imagesLoaded: true, 
         hash: true,
-        fullscreen: true,
       }}
     >
       {children}
@@ -36,9 +34,7 @@ const Caroussel = ({ post, children}) => {
           }
 
           <div className="cursor-pointer absolute top-10 right-10">
-            <ShareButton 
-            url={isServer ? '' : location.href} 
-            title={`J'aime une publication d'Anne pantillon : ${post.title}`} />
+            <ShareButton title={`J'aime une publication d'Anne Pantillon : ${post.title}`} />
           </div>
         </div>
       ))}
