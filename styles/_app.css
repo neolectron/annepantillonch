@@ -1,8 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&display=swap');
 
 html, body, #__next {
+  font-family: 'Sorts Mill Goudy', serif;
   height: 100%;
   scroll-snap-type: y proximity;
   /* smooth scroll make the scrolling glitchy on mobile */
