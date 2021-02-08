@@ -34,15 +34,9 @@ export async function getStaticProps() {
   const [pages, tags] = await Promise.all([getPageList(), getTagList()]);
 
   // 1 - Get all the pages that have a tag with the same slug.
-  // 2 - Sort them with the custom_excerpt property (can be null if unset).
-  // 3 - Insert an image wherever you'll find it. (1: posts features_imgs, 2: posts_imgs).
+  // 2 - Insert an image wherever you'll find it. (1: posts features_imgs, 2: posts_imgs).
   const workPages = pages
     .filter((page) => tags.map(t => t.slug).includes(page.slug))
-    .sort(({ custom_excerpt: a }, { custom_excerpt: b}) => {
-      if (!a) return 1;
-      if (!b) return 0;
-      return (a - b);
-    })
     .map(async (page) => ({
       ...page,
       feature_image: (page.feature_image || await findImageForPage(page.slug))
