@@ -33,7 +33,7 @@ const Caroussel = ({ post, children}) => {
             </div>
           }
 
-          <div className="cursor-pointer absolute top-10 right-10">
+          <div className="cursor-pointer absolute top-4 right-10">
             <ShareButton title={`J'aime une publication d'Anne Pantillon : ${post.title}`} />
           </div>
         </div>
