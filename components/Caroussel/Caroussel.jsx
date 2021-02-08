@@ -24,9 +24,8 @@ const Caroussel = ({ post, children}) => {
             className={`min-w-0 h-full flex-shrink object-contain`} />
 
           {img.caption &&
-            <div className={`${styles.carousselCaption} 
-            py-2 md:py-8 px-4 flex flex-col items-center flex-shrink md:self-end md:flex-shrink-0`}>
-              <div className={`text-center flex justify-center whitespace-pre-line`} >
+            <div className={`py-2 px-2 md:py-8 flex flex-col flex-shrink md:self-end md:flex-shrink-0`}>
+              <div className={`flex whitespace-pre-line`} >
                 {img.caption.replace(/,/g, '\n')}
               </div>
               <Button href={`mailto:annepantillon@gmail.com?subject=a propos de la serie ${post.slug}`}>Contacter l'artiste</Button>

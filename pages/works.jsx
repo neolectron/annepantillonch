@@ -7,7 +7,7 @@ export default function Works({ pageList }) {
 
   return (
     <Layout title="works" mainClassName="bg-white">
-      <div className="h-28 flex justify-center items-center text-5xl font-bold">
+      <div className="h-28 flex justify-center items-center text-2xl">
         WORKS
       </div>
       <div className={`px-8 pb-8 min-h-screen flex flex-wrap justify-between items-center gap-4 w-full`}>
@@ -15,7 +15,7 @@ export default function Works({ pageList }) {
           <Link key={page.id} href={`/${page.slug}`} >
             <a className={`h-48 flex justify-center items-center flex-grow 
             px-4 rounded-sm
-            text-xl md:text-3xl md:whitespace-nowrap font-bold text-white text-center uppercase
+            text-xl md:text-2xl md:whitespace-nowrap text-white text-center uppercase
             bg-zoom bg-center duration-1000 ease-in-out`}
               style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${page.feature_image})`, 
               flexBasis: `${Math.random() > 0.5 ? 30 : 45}%`}}>

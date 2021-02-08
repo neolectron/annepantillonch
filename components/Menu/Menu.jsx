@@ -40,7 +40,7 @@ const Menu = ({children, Bgtransparent}) => {
       className={`z-20 fixed top-0 right-0 flex flex-col h-auto w-full
       md:h-full md:w-72 md:border-l md:border-b-0
       ${Bgtransparent ? 'bg-transparent text-white border-white' : 'bg-white text-black border-black' }
-      font-bold border-b border-opacity-20`}
+      border-b border-opacity-20`}
       style={{ transform: spring.translate.interpolate(x => `translate3d(${x}px,0,0)`), backdropFilter: `blur(5px)` }}
       onClick={() => setOpen(!open)}
       ref={menuRef}
@@ -54,10 +54,14 @@ const Menu = ({children, Bgtransparent}) => {
 
       <animated.div className="w-full " style={{ overflow: 'hidden', height : spring.height }}>
         <div ref={listRef}>
-          <nav className={`${styles.menuChildren} w-full flex flex-col text-xl select-none`}>
+          <nav className={`${styles.menuChildren} w-full flex flex-col text-xl uppercase select-none`}>
             {children}
           </nav>
           <div className={`flex ml-14 items-start justify-start`}>
+            <a href="https://www.linkedin.com/in/anne-pantillon-3b1b7468/" target="_blank"
+              className="m-2 ml-0 transform hover:scale-110">
+              <Icon name="linkedin" />
+            </a>
             <a href="https://www.instagram.com/anne_pantillon/" target="_blank"
             className="m-2 transform hover:scale-110">
               <Icon name="instagram" />
@@ -67,12 +71,8 @@ const Menu = ({children, Bgtransparent}) => {
               <Icon name="youtube" />
             </a>
             <a href="https://www.facebook.com/atelier.anne.pantillon" target="_blank" 
-            className="m-2 transform hover:scale-110">
+            className="m-2 ml-0 transform hover:scale-110">
               <Icon name="facebook" />
-            </a>
-            <a href="https://www.linkedin.com/in/anne-pantillon-3b1b7468/" target="_blank" 
-            className="m-2 transform hover:scale-110">
-              <Icon name="linkedin" />
             </a>
           </div>
         </div>

@@ -43,19 +43,18 @@ export default function Home({ page, news }) {
       </div>
 
       <div className="relative z-10 px-2 md:px-10 flex-grow flex flex-col justify-center items-start text-white">
-        <a.h1 style={{ marginTop: '25%', opacity: first.opacity, transform: first.transform.interpolate(translate) }}
-          className="opacity-0 text-5xl md:text-8xl px-4 border-b border-opacity-30 border-white">
+        <a.h1 style={{ marginTop: '30%', opacity: first.opacity, transform: first.transform.interpolate(translate) }}
+          className="opacity-0 text-5xl md:text-8xl">
           Anne Pantillon
         </a.h1>
         <a.h2 style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }}
-          className="opacity-0 text-2xl text-gray-300 shadow-xl px-4">
-          Artiste Plasticienne 
+          className="opacity-0 text-2xl text-gray-300 shadow-xl uppercase -mt-2">
+          Artiste Plasticienne
         </a.h2>
 
         {news && <Link href={`/posts/${news.slug}`} >
-          <a className={`p-4 my-14 w-full md:w-4/12 
-          border border-white bg-white bg-opacity-70 text-black`}
-          >
+          <a className={`p-4 my-10 w-full md:w-2/12 
+          border border-white bg-white text-black`}>
             <RichContent post={news} />
           </a>
         </Link>}
@@ -63,12 +62,11 @@ export default function Home({ page, news }) {
 
       <Link href="/works">
         <a.a style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }} 
-        className="hidden md:block z-10 absolute top-4 right-14 py-2 px-4 cursor-pointer">
-          <div className={`flex items-center 
-          text-3xl text-gray-300 border-b border-white border-opacity-30
-          transform transition-transform hover:scale-105 `}>
-            Explorez mes oeuvres
-            <svg className="mx-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        className="hidden md:block z-10 absolute top-1 right-14 py-2 px-4 cursor-pointer">
+          <div className={`flex items-center uppercase
+          text-2xl text-gray-300 transform transition-transform hover:scale-105`}>
+            Works
+            <svg className="mx-2" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
               <path fill="currentColor" d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
             </svg>
           </div>

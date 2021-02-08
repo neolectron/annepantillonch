@@ -2,6 +2,7 @@
 .post-full-content {
   @apply bg-transparent;
   @apply p-0;
+  font-family: 'Sorts Mill Goudy', serif;
 }
 
 /* fix weird hr */
@@ -11,25 +12,27 @@
 
 /* fix sizes and fonts sizes */
 .post-full-content h2 {
+  font-family: 'Sorts Mill Goudy', serif;
   @apply mb-10;
   @apply text-3xl;
 }
 
 .post-full-content h3 {
+  font-family: 'Sorts Mill Goudy', serif;
   @apply mb-7;
-  @apply text-xl;
+  @apply text-2xl;
 }
 
 .post-full-content p {
+  @apply text-justify;
   @apply my-4;
-  @apply text-base;
+  @apply text-lg;
   @apply min-w-0;
-  max-width: 630px;
+  max-width: 550px;
 }
 
 .post-full-content a {
   @apply text-blue-600;
-  @apply p-2;
 }
 
 .post-full-content a:hover {
@@ -74,8 +77,8 @@
 
 @media (min-width: 768px) {
   .post-full-content figure iframe {
-    width: 560px;
-    height: 340px;
+  @apply w-full;
+  @apply h-auto;
   }
 }
 
