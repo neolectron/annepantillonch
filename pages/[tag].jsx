@@ -8,7 +8,7 @@ import Link from 'next/link';
 export default function Tag({ postList, tag, page }) {
   return (
     <Layout title={`${tag} works`}>
-      <div className="flex flex-col gap-14">
+      <div className="flex flex-col">
         <div className="px-8 mt-1"><Button asLink href="/works" > &lt; Works </Button></div>
         {page && page.html && <div className="px-8"><RichContent post={page} /></div>}
         {postList.map((post) => (
@@ -29,7 +29,7 @@ export default function Tag({ postList, tag, page }) {
           </Caroussel>
         ))}
 
-        <div className={`mb-32 flex justify-center items-center`}>
+        <div className={`my-14 flex justify-center items-center`}>
           <svg onClick={() => scrollTo({ top: 0, behavior: 'smooth' })} xmlns="http://www.w3.org/2000/svg"
           width="100" height="50" viewBox="0 0 240.835 240.835"
           className={`cursor-pointer transition-transform transform hover:-translate-y-2`} >

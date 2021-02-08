@@ -8,7 +8,7 @@ const Caroussel = ({ post, children}) => {
   return (
     <Flickity
       static
-      className={`${styles.caroussel} w-full snap-start bg-white pt-14 md:pt-0`}
+      className={`${styles.caroussel} w-full snap-start bg-white my-4`}
       options={{ cellAlign: 'left', 
         setGallerySize: false, 
         lazyLoad: 3, 
