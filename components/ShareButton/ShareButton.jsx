@@ -33,7 +33,7 @@ const ShareButton = ({title}) => {
         </FacebookShareButton>
       </a.div>
     :
-      <a.svg style={props} onClick={() => setOpen(true)} height="24" width="24" viewBox="-21 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <a.svg key={key} style={props} onClick={() => setOpen(true)} height="24" width="24" viewBox="-21 0 512 512" xmlns="http://www.w3.org/2000/svg">
         <path d="m453.332031 85.332031c0 38.292969-31.039062 69.335938-69.332031
                 69.335938s-69.332031-31.042969-69.332031-69.335938c0-38.289062 31.039062-69.332031
                 69.332031-69.332031s69.332031 31.042969 69.332031 69.332031zm0 0" />
