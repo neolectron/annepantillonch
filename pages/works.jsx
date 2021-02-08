@@ -10,7 +10,7 @@ export default function Works({ pageList }) {
       <div className="h-28 flex justify-center items-center text-5xl font-bold">
         WORKS
       </div>
-      <div className={`px-8 pb-8 min-h-screen flex flex-wrap justify-between items-center gap-4 w-full md:pr-20`}>
+      <div className={`px-8 pb-8 min-h-screen flex flex-wrap justify-between items-center gap-4 w-full`}>
         {pageList.map((page) => (
           <Link key={page.id} href={`/${page.slug}`} >
             <a className={`h-48 flex justify-center items-center flex-grow 
