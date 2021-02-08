@@ -1,9 +1,9 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout.jsx';
-import { getLastImageForTag, getPageList, getTagList } from '../lib/ghost.js';
+import { getPageList, getTagList, findImageForPage } from '../lib/ghost.js';
 import Link from 'next/link';
 
-export default function Works({ tagList }) {
+export default function Works({ pageList }) {
 
   return (
     <Layout title="works">
@@ -11,15 +11,15 @@ export default function Works({ tagList }) {
         Works
       </div>
       <div className={`px-8 pb-8 min-h-screen flex flex-wrap justify-between items-center gap-4 w-full md:pr-20`}>
-        {tagList.map((tag) => (
-          <Link key={tag.id} href={`/${tag.slug}`} >
+        {pageList.map((page) => (
+          <Link key={page.id} href={`/${page.slug}`} >
             <a className={`h-48 flex justify-center items-center flex-grow 
             px-4 rounded-sm
             text-xl md:text-3xl md:whitespace-nowrap font-bold text-white text-center uppercase
             bg-zoom bg-center duration-1000 ease-in-out`}
-              style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${tag.feature_image})`, 
+              style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${page.feature_image})`, 
               flexBasis: `${Math.random() > 0.5 ? 30 : 45}%`}}>
-              {tag.name}
+              {page.title}
             </a>
           </Link>
         ))}
@@ -28,71 +28,29 @@ export default function Works({ tagList }) {
   )
 }
 
-
-
-
-
-
 // Fetch necessary data for the blog post using params.slug
 export async function getStaticProps() {
 
-  const [pages, rawTags] = await Promise.all([getPageList(), getTagList()]);
-  // get All tags having a Page with the same name
-  // also exclude the 'news' tag
-  // and pagination data in the "meta" property,
-  // because tag.slug is undefined
-  const pageTags = rawTags
-    .filter( (tag) => (
-      tag.slug && tag.slug !== 'news' && pages.map(p => p.slug).includes(tag.slug)
-    ));
+  const [pages, tags] = await Promise.all([getPageList(), getTagList()]);
 
-  // sort tags according to this order
-  // if they are not in this list, push them after 
-  const sortOrder = [
-    'interieur',
-    'oscillography',
-    'small-papers-dessins',
-    'performances',
-    'rivers-rocks',
-    'papiers-colles',
-    'livres',
-    'gravure-engraving',
-    'carnets-de-voyage',
-    'fashion-design',
-  ];
-
-  const sortedTags = pageTags.sort((a, b) => {
-
-    const indexA = sortOrder.indexOf(a.slug);
-    const indexB = sortOrder.indexOf(b.slug);
-
-    // if they are both not in the sorted array
-    // do not sort them
-    if (indexA === -1 && indexB === -1)
-      return 0;
-
-    // if they are both in the sorted array
-    // sort them
-    if (indexA !== -1 && indexB !== -1)
-      return indexA - indexB;
-    
-    // if the second is not found, return -1
-    // if the second is found return its index
-    return indexB;
-
-  })
-
-  // if the tag does not have a feature image,
-  // we'll look for a feature image in posts (searching from last to first).
-  // if it still does not have one, we'll search for any images in a tagged post
-  // (from last to first still)
-  const imgs = await Promise.all(
-    sortedTags.map(async (tag) => tag.feature_image || getLastImageForTag(tag.slug) || '/technique.png')
-  );
+  // 1 - Get all the pages that have a tag with the same slug.
+  // 2 - Sort them with the custom_excerpt property (can be null if unset).
+  // 3 - Insert an image wherever you'll find it. (1: posts features_imgs, 2: posts_imgs).
+  const workPages = pages
+    .filter((page) => tags.map(t => t.slug).includes(page.slug))
+    .sort(({ custom_excerpt: a }, { custom_excerpt: b}) => {
+      if (!a) return 1;
+      if (!b) return 0;
+      return (a - b);
+    })
+    .map(async (page) => ({
+      ...page,
+      feature_image: (page.feature_image || await findImageForPage(page.slug))
+    }));
 
   return {
     props: {
-      tagList: sortedTags.map((tag, index) => ({ ...tag, feature_image: imgs[index] }))
+      pageList: await Promise.all(workPages)
     }
   }
 
