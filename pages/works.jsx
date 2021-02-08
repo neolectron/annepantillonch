@@ -56,6 +56,7 @@ export async function getStaticProps() {
     'rivers-rocks',
     'papiers-colles',
     'livres',
+    'gravure-engraving',
     'carnets-de-voyage',
     'fashion-design',
   ];
