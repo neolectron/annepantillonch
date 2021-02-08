@@ -44,7 +44,7 @@ export default function Home({ page, news }) {
 
       <div className="relative z-10 px-2 md:px-10 flex-grow flex flex-col justify-center items-start text-white">
         <a.h1 style={{ marginTop: '25%', opacity: first.opacity, transform: first.transform.interpolate(translate) }}
-          className="opacity-0 text-5xl md:text-8xl font-bold px-4 border-b border-opacity-30 border-white">
+          className="opacity-0 text-5xl md:text-8xl px-4 border-b border-opacity-30 border-white">
           Anne Pantillon
         </a.h1>
         <a.h2 style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }}
