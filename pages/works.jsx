@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function Works({ pageList }) {
 
   return (
-    <Layout title="works">
+    <Layout title="works" mainClassName="bg-white">
       <div className="h-28 flex justify-center items-center text-5xl font-bold">
         WORKS
       </div>
