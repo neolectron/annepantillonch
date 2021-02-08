@@ -24,7 +24,7 @@
   @apply my-4;
   @apply text-base;
   @apply min-w-0;
-  max-width: 700px;
+  max-width: 630px;
 }
 
 .post-full-content a {
@@ -81,4 +81,14 @@
 
 .post-full-content iframe {
   @apply m-0 !important;
+}
+
+.textOnly figure {
+  display: none;
+}
+
+.textOnly p {
+  text-align: justify;
+  margin-bottom: 10px;
+  max-width: 630px;
 }

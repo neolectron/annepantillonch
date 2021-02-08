@@ -5,6 +5,8 @@ import RichContent from '../components/RichContent/RichContent.jsx';
 import Button from '../components/Button/Button.jsx';
 import Link from 'next/link';
 
+import styles from '../styles/ghost-post-overrides.module.css';
+
 export default function Tag({ postList, tag, page }) {
   return (
     <Layout title={`${tag} works`}>
@@ -14,9 +16,9 @@ export default function Tag({ postList, tag, page }) {
         {postList.map((post) => (
           <Caroussel key={post.id} post={post}>
             <div id={`${post.id}-0`} className="snap-start h-full w-full flex flex-col justify-center items-center text-3xl md:text-5xl">
-              <div className='p-4 md:p-14 w-full flex flex-col justify-center items-center flex-grow'>
+              <div className='p-4 md:p-14 flex-grow flex w-full h-full flex-col justify-center items-center flex-wrap'>
                 <div>{post.title}</div>
-                <div className="text-xl p-4">{post.description}</div>
+                <div className={`${styles.textOnly} text-xl p-4`} dangerouslySetInnerHTML={{__html : post.html}}></div>
               </div>
               <div className="pb-4 text-center w-full text-lg text-blue-600">
                 {post.tags.map(t => (
