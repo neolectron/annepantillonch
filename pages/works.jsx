@@ -8,7 +8,7 @@ export default function Works({ pageList }) {
   return (
     <Layout title="works">
       <div className="h-28 flex justify-center items-center text-5xl font-bold">
-        Works
+        WORKS
       </div>
       <div className={`px-8 pb-8 min-h-screen flex flex-wrap justify-between items-center gap-4 w-full md:pr-20`}>
         {pageList.map((page) => (
