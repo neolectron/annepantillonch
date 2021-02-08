@@ -53,10 +53,8 @@ export default function Home({ page, news }) {
         </a.h2>
 
         {news && <Link href={`/posts/${news.slug}`} >
-          <a className={`p-4 my-14 w-full md:w-4/12 border border-white bg-white
-          bg-opacity-70 md:bg-opacity-30 hover:bg-opacity-70 
-          text-black md:text-white hover:text-black
-          transition-opacity md:opacity-30 hover:opacity-100`}
+          <a className={`p-4 my-14 w-full md:w-4/12 
+          border border-white bg-white bg-opacity-70 text-black`}
           >
             <RichContent post={news} />
           </a>
@@ -65,7 +63,7 @@ export default function Home({ page, news }) {
 
       <Link href="/works">
         <a.a style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }} 
-        className="hidden md:block z-10 absolute bottom-14 right-14 py-2 px-4 cursor-pointer">
+        className="hidden md:block z-10 absolute top-4 right-14 py-2 px-4 cursor-pointer">
           <div className={`flex items-center 
           text-3xl text-gray-300 border-b border-white border-opacity-30
           transform transition-transform hover:scale-105 `}>
