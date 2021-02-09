@@ -3,9 +3,8 @@ import Article from '../Article/Article.jsx';
 import Photo from '../Photo/Photo.jsx';
 import ShareButton from '../ShareButton/ShareButton.jsx';
 
-import Link from 'next/link';
-
 import styles from './caroussel.module.css';
+import TagList from '../TagList/TagList.jsx';
 
 const Caroussel = ({ serie }) => {
 
@@ -14,7 +13,8 @@ const Caroussel = ({ serie }) => {
       <Flickity
         static
         className={`${styles.caroussel} w-full snap-start bg-white`}
-        options={{ cellAlign: 'left', 
+        options={{ 
+          cellAlign: 'left', 
           setGallerySize: false, 
           lazyLoad: 3, 
           imagesLoaded: true, 
@@ -26,12 +26,8 @@ const Caroussel = ({ serie }) => {
             <div>{serie.title}</div>
             <Article html={serie.html} hideFigure />
           </div>
-          <div className="pb-4 text-center w-full text-lg text-blue-600">
-            {serie.tags.map(t => (
-              <Link key={t.slug} href={`/${t.slug}`}>
-                <a>#{t.slug} </a>
-              </Link>
-            ))}
+          <div className="text-center w-full">
+            <TagList tags={serie.tags} />
           </div>
         </div>
 
