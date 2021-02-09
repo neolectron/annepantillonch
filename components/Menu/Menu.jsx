@@ -60,19 +60,19 @@ const Menu = ({children, Bgtransparent}) => {
           <div className={`flex ml-14 items-start justify-start`}>
             <a href="https://www.linkedin.com/in/anne-pantillon-3b1b7468/" target="_blank"
               className="m-2 ml-0 transform hover:scale-110">
-              <Icon name="linkedin" />
+              <Icon name="linkedin" reversed />
             </a>
             <a href="https://www.instagram.com/anne_pantillon/" target="_blank"
             className="m-2 transform hover:scale-110">
-              <Icon name="instagram" />
+              <Icon name="instagram" reversed />
             </a>
             <a href="https://www.youtube.com/channel/UCJ7Zo_T1yTfsNVWu6REvi_w" target="_blank" 
             className="m-2 transform hover:scale-110">
-              <Icon name="youtube" />
+              <Icon name="youtube" reversed />
             </a>
             <a href="https://www.facebook.com/atelier.anne.pantillon" target="_blank" 
             className="m-2 ml-0 transform hover:scale-110">
-              <Icon name="facebook" />
+              <Icon name="facebook" reversed />
             </a>
           </div>
         </div>
