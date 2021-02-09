@@ -1,17 +1,33 @@
 import Flickity from 'react-flickity-component';
 import Article from '../Article/Article.jsx';
 import Photo from '../Photo/Photo.jsx';
+import TagList from '../TagList/TagList.jsx';
 import ShareButton from '../ShareButton/ShareButton.jsx';
+import Cartel from '../Cartel/Cartel.jsx';
 
 import styles from './caroussel.module.css';
-import TagList from '../TagList/TagList.jsx';
+import { useEffect, useRef, useState } from 'react';
 
 const Caroussel = ({ serie }) => {
+
+  const flickity = useRef(null);
+  const [pos, setPos] = useState(0);
+
+  useEffect(() => {
+    console.log(pos, serie.imgs[pos])
+    if(!flickity.current)
+      return null;
+
+    flickity.current.on('change', setPos);
+    return () => flickity.current.off('change', setPos);
+
+  }, [pos, setPos]);
 
   return (
     <div className="relative">
       <Flickity
         static
+        flickityRef={ref => flickity.current = ref}
         className={`${styles.caroussel} w-full snap-start bg-white`}
         options={{ 
           cellAlign: 'left', 
@@ -35,6 +51,7 @@ const Caroussel = ({ serie }) => {
 
       </Flickity>
       <ShareButton className="absolute top-4 right-4" title={`J'aime une publication d'Anne Pantillon: ${serie.title}`}/>
+      <Cartel className="absolute bottom-4 right-10" caption={serie.imgs[pos - 1]?.caption} />
     </div>
   );
 }
