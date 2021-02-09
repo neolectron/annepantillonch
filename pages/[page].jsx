@@ -4,6 +4,7 @@ import Button from '../components/Button/Button.jsx';
 import Article from '../components/Article/Article';
 import Caroussel from '../components/Caroussel/Caroussel.jsx';
 import Icon from '../components/Icon/Icon';
+import Link from 'next/link';
 
 export default function Page({ series, article }) {
 
@@ -11,7 +12,11 @@ export default function Page({ series, article }) {
     <Layout title={article.title}>
       <div className="flex flex-col">
         <div className="px-2 md:px-10 grid grid-cols-1 md:grid-cols-3">
-          <div className="p-4"><Button icon="left" text="Works" /></div>
+          <div className="p-4">
+            <Link href="/works">
+              <Button asAnchor icon="left" text="Works" />
+            </Link>
+          </div>
           <Article html={article.html} />
         </div>
         <div className="flex flex-col gap-14">
