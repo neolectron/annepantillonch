@@ -9,7 +9,7 @@ import Link from 'next/link';
 export default function Page({ series, article }) {
 
   return (
-    <Layout title={article.title}>
+    <Layout title={article?.title}>
       <div className="flex flex-col">
         <div className="px-2 md:px-10 grid grid-cols-1 md:grid-cols-3">
           <div className="p-4">
@@ -17,7 +17,7 @@ export default function Page({ series, article }) {
               <Button asAnchor icon="left" text="Works" />
             </Link>
           </div>
-          <Article html={article.html} />
+          <Article html={article?.html} />
         </div>
         <div className="flex flex-col gap-14">
           {series.map((serie) => <Caroussel key={serie.id} serie={serie} />)}
@@ -37,7 +37,8 @@ export async function getStaticPaths() {
   const tags = await getTagList();
 
   return { 
-    paths: tags.map((tag) => ({ params: { page: tag.slug } })),
+    paths: tags.filter(t => t.slug !== 'news')
+      .map((tag) => ({ params: { page: tag.slug } })),
     fallback: false,
   }
 }
@@ -49,8 +50,8 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      series,
-      article,
+      series: series || null,
+      article: article || null,
     }
   };
 }

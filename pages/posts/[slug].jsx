@@ -1,15 +1,20 @@
 import { getPostList, getPostBySlug } from '../../lib/ghost';
-
 import Layout from '../../components/Layout/Layout.jsx';
 import Button from '../../components/Button/Button.jsx';
 import Article from '../../components/Article/Article.jsx';
 
+import Link from 'next/link';
+
 const Post = ({ post }) => (
   <Layout column title={`Anne Pantillon - ${post.title}`}>
     <div className="p-8 mt-14 md:mt-0 md:mr-12">
-      <Button asLink href="/" > &lt; Accueil </Button>
+      <Link href="/works">
+        <a>
+          <Button asAnchor icon="left">Works</Button>
+        </a>
+      </Link>
       <div className="flex flex-col gap-14">
-        <div className="p-8"><Article html={post.html} /></div>
+        <div className="p-8"><Article html={post?.html} /></div>
       </div>
     </div>
   </Layout>

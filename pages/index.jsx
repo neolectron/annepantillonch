@@ -45,7 +45,7 @@ export default function Home({ page, news }) {
 
       <div className="relative z-10 flex-grow grid grid-cols-1 md:grid-cols-6 grid-rows-3 content-center">
 
-        <div style={{marginTop: '50%'}} className="p-2 md:p-10 col-span-2 flex flex-col justify-center">
+        <div style={{marginTop: '50%'}} className="px-2 md:px-10 col-span-2 flex flex-col justify-center">
           <a.h1 style={{ opacity: first.opacity, transform: first.transform.interpolate(translate) }}
             className="text-5xl md:text-8xl text-white">
             Anne Pantillon
