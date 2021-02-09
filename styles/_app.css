@@ -46,6 +46,10 @@ body {
   scroll-snap-align: start;
 }
 
+.undefined {
+  background-color: red !important;
+}
+
 @keyframes pulse {
   from {
     transform: scale(1);

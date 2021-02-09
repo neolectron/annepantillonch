@@ -12,7 +12,7 @@ const Article = ({html, className, hideFigure, ...rest}) => {
 
   return (
     <article dangerouslySetInnerHTML={{ __html: html }}
-    className={`${styles.article} ${hideFigure ? styles.hideFigure : ''} ${className}`}
+    className={`${styles.article} ${hideFigure ? styles.hideFigure : ''} ${className || ''}`}
     {...rest} />
   )
 };
