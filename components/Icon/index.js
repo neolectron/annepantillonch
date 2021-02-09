@@ -1,0 +1,9 @@
+export { default as burger } from './icons/burger.svg';
+export { default as up } from './icons/up.svg';
+export { default as down } from './icons/down.svg';
+export { default as left } from './icons/left.svg';
+export { default as right } from './icons/right.svg';
+export { default as facebook } from './icons/facebook.svg';
+export { default as instagram } from './icons/instagram.svg';
+export { default as linkedin } from './icons/linkedin.svg';
+export { default as youtube } from './icons/youtube.svg';

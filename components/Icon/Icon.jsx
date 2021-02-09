@@ -1,7 +1,14 @@
-import Image from 'next/image';
+import * as icons from './index';
 
-const iconsPath = '/icons';
+import styles from './icon.module.css';
 
-const Icon = ({name, width = 25, height = 25}) => <Image src={`${iconsPath}/${name}.svg`} width={width} height={height} />
+const Icon = ({name, reversed = false, width = 25, height = 25}) => {
+
+  const Image = icons[name];
+
+  return (
+    <Image className={reversed ? styles.white : styles.black} width={width} height={height} />
+  );
+};
 
 export default Icon;

@@ -27,6 +27,7 @@
     "autoprefixer": "^10.0.4",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "next-svgr": "^0.0.2",
     "next-transpile-modules": "^6.0.0",
     "postcss": "^8.1.7",
     "tailwindcss": "^2.0.1"
