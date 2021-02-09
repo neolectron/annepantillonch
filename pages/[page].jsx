@@ -10,11 +10,13 @@ export default function Page({ series, article }) {
   return (
     <Layout title={article.title}>
       <div className="flex flex-col">
-        <div className="px-2 md:px-10">
-          <Button icon="left" text="Works"/>
+        <div className="px-2 md:px-10 grid grid-cols-1 md:grid-cols-3">
+          <div className="p-4"><Button icon="left" text="Works" /></div>
           <Article html={article.html} />
         </div>
-        {series.map((serie) => <Caroussel key={serie.id} serie={serie} />)}
+        <div className="flex flex-col gap-14">
+          {series.map((serie) => <Caroussel key={serie.id} serie={serie} />)}
+        </div>
         <div className={`my-14 flex justify-center items-center`}>
           <Icon name="up"/>
         </div>

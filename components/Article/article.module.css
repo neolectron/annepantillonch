@@ -20,8 +20,13 @@
 }
 
 .article a:hover {
-  @apply text-blue-600;
   @apply underline;
+}
+
+.article figure iframe {
+  @apply min-w-full;
+  @apply max-h-full;
+  min-height: 340px;
 }
 
 .hideFigure figure {
