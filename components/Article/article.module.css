@@ -1,0 +1,29 @@
+.article h2 {
+  @apply mb-10;
+  @apply text-3xl;
+}
+
+.article h3 {
+  @apply mb-7;
+  @apply text-2xl;
+}
+
+.article p {
+  @apply my-4;
+  @apply min-w-0;
+  @apply text-lg;
+  @apply text-justify;
+}
+
+.article a {
+  @apply text-blue-600;
+}
+
+.article a:hover {
+  @apply text-blue-600;
+  @apply underline;
+}
+
+.article.hideFigure figure {
+  display: none;
+}

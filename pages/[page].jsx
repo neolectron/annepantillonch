@@ -7,13 +7,17 @@ import RichContent from '../components/RichContent/RichContent.jsx';
 import Button from '../components/Button/Button.jsx';
 
 import styles from '../styles/ghost-post-overrides.module.css';
+import Article from '../components/Article/Article';
 
 export default function Page({ series, article }) {
+
   return (
-    <Layout title={`${article.name} works`}>
+    <Layout title={article.title}>
       <div className="flex flex-col">
-        <div className="px-8 mt-1"> <Button icon="left" text="Works"/> </div>
-        {article?.html && <div className="px-8"><RichContent post={article} /></div>}
+        <div className="px-2 md:px-10">
+          <Button icon="left" text="Works"/>
+          <Article html={article.html} />
+        </div>
         {series.map((serie) => (
           <Caroussel key={serie.id} post={serie}>
             <div id={`${serie.id}-0`} className="snap-start h-full w-full flex flex-col justify-center items-center text-3xl md:text-5xl">

@@ -28,7 +28,7 @@ const Caroussel = ({ post, children}) => {
               <div className={`flex whitespace-pre-line`} >
                 {img.caption.replace(/,/g, '\n')}
               </div>
-              <Button href={`mailto:annepantillon@gmail.com?subject=a propos de la serie ${post.slug}`}>Contacter l'artiste</Button>
+              <Button swaped text="Contacter l'artiste" icon="right" />
             </div>
           }
 
