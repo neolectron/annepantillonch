@@ -7,22 +7,10 @@ html, body, #__next {
   font-family: 'Sorts Mill Goudy', serif;
   height: 100%;
   scroll-snap-type: y proximity;
-  /* smooth scroll make the scrolling glitchy on mobile */
-  /* because of scroll snap */
-  /* scroll-behavior: smooth; */
 }
 
 body {
   overflow-x: hidden;
-}
-
-.hiddenscrollbar > div {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.hiddenscrollbar > div::-webkit-scrollbar {
-  display: none;
 }
 
 .bg-zoom {
@@ -36,10 +24,6 @@ body {
 
 .bg-pulse {
   animation: pulse 25s linear 1s infinite alternate;
-}
-
-.snap-container {
-  scroll-snap-type: y mandatory;
 }
 
 .snap-start {

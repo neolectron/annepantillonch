@@ -65,15 +65,6 @@ export default function Home({ page, news }) {
             </div>
           }
         </div>
-
-        {/* {news && 
-          <Link href={`/posts/${news.slug}`} >
-            <a className="block bg-white shadow-xl p-2">
-              <Article html={news.html} />
-            </a>
-          </Link>
-        } */}
-
       </div>
 
       <Link href="/works">
