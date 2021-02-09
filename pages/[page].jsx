@@ -12,7 +12,7 @@ export default function Page({ series, article }) {
   return (
     <Layout title={`${article.name} works`}>
       <div className="flex flex-col">
-        <div className="px-8 mt-1"><Button asLink href="/works" > &lt; Works </Button></div>
+        <div className="px-8 mt-1"> <Button icon="left" text="Works"/> </div>
         {article?.html && <div className="px-8"><RichContent post={article} /></div>}
         {series.map((serie) => (
           <Caroussel key={serie.id} post={serie}>

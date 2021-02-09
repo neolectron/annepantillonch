@@ -63,8 +63,8 @@ export default function Home({ page, news }) {
 
       <Link href="/works">
         <a.a style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }} 
-        className="hidden md:block z-10 absolute top-1 right-14 py-2 px-4 cursor-pointer">
-          <Button reversed icon="right" text="Works" />
+        className="hidden md:block z-10 absolute top-1 right-14 py-2 px-4 cursor-pointer text-gray-300">
+          <Button reversed swaped icon="right" text="Works" />
         </a.a>
       </Link>
 

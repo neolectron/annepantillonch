@@ -1,8 +1,11 @@
 import Icon from '../Icon/Icon.jsx';
 
-const Button = ({icon, reversed, children, text}) => (
-  <button className={`flex uppercase text-2xl text-gray-300 transform transition-transform hover:scale-105 focus:outline-none`}>
-    {children || text} <Icon reversed={reversed} name={icon} />
+const Button = ({ icon, reversed, swaped, children, text, ...rest }) => (
+  <button className={`flex uppercase text-2xl 
+  focus:outline-none transform transition-transform hover:scale-105`} {...rest}>
+    {swaped && (children || text)}
+    <Icon reversed={reversed} name={icon} />
+    {swaped || (children || text)}
   </button>
 );
 
