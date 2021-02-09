@@ -1,27 +1,28 @@
-import { getTagList, getPostListByTags, getPageBySlug } from '../lib/ghost';
+import Link from 'next/link';
+
+import { getPageBySlug, getTagList, getPostListByTags,  } from '../lib/ghost';
 import Layout from '../components/Layout/Layout.jsx';
 import Caroussel from '../components/Caroussel/Caroussel.jsx';
 import RichContent from '../components/RichContent/RichContent.jsx';
 import Button from '../components/Button/Button.jsx';
-import Link from 'next/link';
 
 import styles from '../styles/ghost-post-overrides.module.css';
 
-export default function Tag({ postList, tag, page }) {
+export default function Page({ series, article }) {
   return (
-    <Layout title={`${tag} works`}>
+    <Layout title={`${article.name} works`}>
       <div className="flex flex-col">
         <div className="px-8 mt-1"><Button asLink href="/works" > &lt; Works </Button></div>
-        {page && page.html && <div className="px-8"><RichContent post={page} /></div>}
-        {postList.map((post) => (
-          <Caroussel key={post.id} post={post}>
-            <div id={`${post.id}-0`} className="snap-start h-full w-full flex flex-col justify-center items-center text-3xl md:text-5xl">
+        {article?.html && <div className="px-8"><RichContent post={article} /></div>}
+        {series.map((serie) => (
+          <Caroussel key={serie.id} post={serie}>
+            <div id={`${serie.id}-0`} className="snap-start h-full w-full flex flex-col justify-center items-center text-3xl md:text-5xl">
               <div className='p-4 md:p-14 flex-grow flex w-full h-full flex-col justify-center items-center flex-wrap'>
-                <div>{post.title}</div>
-                <div className={`${styles.textOnly} text-xl p-4`} dangerouslySetInnerHTML={{__html : post.html}}></div>
+                <div>{serie.title}</div>
+                <div className={`${styles.textOnly} text-xl p-4`} dangerouslySetInnerHTML={{__html : serie.html}}></div>
               </div>
               <div className="pb-4 text-center w-full text-lg text-blue-600">
-                {post.tags.map(t => (
+                {serie.tags.map(t => (
                   <Link key={t.slug} href={`/${t.slug}`}>
                     <a>#{t.slug} </a>
                   </Link>
@@ -52,22 +53,20 @@ export async function getStaticPaths() {
   const tags = await getTagList();
 
   return { 
-    paths: tags.filter((tag) => tag.slug !== 'news')
-      .map((tag) => ({ params: { tag: tag.slug } })),
-    fallback: false
+    paths: tags.map((tag) => ({ params: { page: tag.slug } })),
+    fallback: false,
   }
 }
 
 // Fetch necessary data for the blog post using params.tag
 export async function getStaticProps({ params }) {
 
-  const [postList, page] = await Promise.all([getPostListByTags(params.tag), getPageBySlug(params.tag)]);
+  const [series, article] = await Promise.all([getPostListByTags(params.page), getPageBySlug(params.page)]);
 
   return {
     props: {
-      postList,
-      page: page || null,
-      tag: params.tag
+      series,
+      article,
     }
   };
 }
