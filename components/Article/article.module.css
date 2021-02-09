@@ -24,6 +24,6 @@
   @apply underline;
 }
 
-.article.hideFigure figure {
+.hideFigure figure {
   display: none;
 }
