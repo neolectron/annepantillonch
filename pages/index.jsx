@@ -43,7 +43,7 @@ export default function Home({ page, news }) {
         </Flickity>
       </div>
 
-      <div className="relative z-10 flex-grow grid grid-cols-1 md:grid-cols-6 grid-rows-3 content-center">
+      <div className="relative z-10 flex-grow grid grid-cols-1 md:grid-cols-6 content-center">
 
         <div style={{marginTop: '50%'}} className="px-2 md:px-10 col-span-2 flex flex-col justify-center">
           <a.h1 style={{ opacity: first.opacity, transform: first.transform.interpolate(translate) }}
@@ -56,24 +56,23 @@ export default function Home({ page, news }) {
           </a.h2>
 
           {news && 
-            <div className="grid  grid-cols-2">
+            <div className="my-4 grid grid-cols-2">
               <Link href={`/posts/${news.slug}`} >
-                <a className="block shadow-xl bg-white ">
+                <a className="p-4 block shadow-xl bg-white ">
                   <Article html={news.html} />
                 </a>
               </Link>
             </div>
           }
-
         </div>
 
-        {news && 
+        {/* {news && 
           <Link href={`/posts/${news.slug}`} >
             <a className="block bg-white shadow-xl p-2">
               <Article html={news.html} />
             </a>
           </Link>
-        }
+        } */}
 
       </div>
 
