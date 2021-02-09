@@ -1,5 +1,5 @@
 import Layout from '../components/Layout/Layout.jsx';
-import RichContent from '../components/RichContent/RichContent.jsx';
+import Article from '../components/Article/Article.jsx';
 import { useCallback } from 'react';
 import { a, config, useTrail } from 'react-spring';
 import { getPageBySlug, getPostListFeatured } from '../lib/ghost.js';
@@ -43,27 +43,43 @@ export default function Home({ page, news }) {
         </Flickity>
       </div>
 
-      <div className="relative z-10 px-2 md:px-10 flex-grow flex flex-col justify-center items-start text-white">
-        <a.h1 style={{ marginTop: '30%', opacity: first.opacity, transform: first.transform.interpolate(translate) }}
-          className="opacity-0 text-5xl md:text-8xl">
-          Anne Pantillon
-        </a.h1>
-        <a.h2 style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }}
-          className="opacity-0 text-2xl text-gray-300 shadow-xl uppercase -mt-2">
-          Artiste Plasticienne
-        </a.h2>
+      <div className="relative z-10 flex-grow grid grid-cols-1 md:grid-cols-6 grid-rows-3 content-center">
 
-        {news && <Link href={`/posts/${news.slug}`} >
-          <a className={`p-4 my-10 w-full md:w-2/12 
-          border border-white bg-white text-black`}>
-            <RichContent post={news} />
-          </a>
-        </Link>}
+        <div style={{marginTop: '50%'}} className="p-2 md:p-10 col-span-2 flex flex-col justify-center">
+          <a.h1 style={{ opacity: first.opacity, transform: first.transform.interpolate(translate) }}
+            className="text-5xl md:text-8xl text-white">
+            Anne Pantillon
+          </a.h1>
+          <a.h2 style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }}
+            className="text-2xl uppercase -mt-2 text-gray-400">
+            Artiste Plasticienne
+          </a.h2>
+
+          {news && 
+            <div className="grid  grid-cols-2">
+              <Link href={`/posts/${news.slug}`} >
+                <a className="block shadow-xl bg-white ">
+                  <Article html={news.html} />
+                </a>
+              </Link>
+            </div>
+          }
+
+        </div>
+
+        {news && 
+          <Link href={`/posts/${news.slug}`} >
+            <a className="block bg-white shadow-xl p-2">
+              <Article html={news.html} />
+            </a>
+          </Link>
+        }
+
       </div>
 
       <Link href="/works">
         <a.a style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }} 
-        className="hidden md:block z-10 absolute top-1 right-14 py-2 px-4 cursor-pointer text-gray-300">
+        className="hidden md:block z-10 fixed top-1 right-14 py-2 px-4 cursor-pointer text-gray-300">
           <Button reversed swaped icon="right" text="Works" />
         </a.a>
       </Link>

@@ -1,6 +1,6 @@
 import { getPostListByTags } from '../lib/ghost.js';
 import Layout from '../components/Layout/Layout.jsx';
-import RichContent from '../components/RichContent/RichContent.jsx';
+import Article from '../components/Article/Article.jsx';
 import Button from '../components/Button/Button.jsx';
 import Link from 'next/link';
 
@@ -13,7 +13,7 @@ export default function News({ news }) {
         {news.map((n) => 
           <Link key={n.slug} href={`/posts/${n.slug}`}>
             <a className={`block p-8 border border-gray-400 w-max bg-white rounded-sm`}>
-              <RichContent post={n} />
+              <Article html={n.html} />
             </a>
           </Link>
         )}

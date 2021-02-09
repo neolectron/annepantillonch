@@ -1,3 +1,7 @@
+.article {
+  @apply w-full;
+}
+
 .article h2 {
   @apply mb-10;
   @apply text-3xl;
