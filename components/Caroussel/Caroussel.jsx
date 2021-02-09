@@ -1,43 +1,45 @@
 import Flickity from 'react-flickity-component';
-import styles from './caroussel.module.css';
-import Button from '../Button/Button.jsx';
+import Article from '../Article/Article.jsx';
+import Photo from '../Photo/Photo.jsx';
 import ShareButton from '../ShareButton/ShareButton.jsx';
 
-const Caroussel = ({ post, children}) => {
+import Link from 'next/link';
+
+import styles from './caroussel.module.css';
+
+const Caroussel = ({ serie }) => {
 
   return (
-    <Flickity
-      static
-      className={`${styles.caroussel} w-full snap-start bg-white my-4`}
-      options={{ cellAlign: 'left', 
-        setGallerySize: false, 
-        lazyLoad: 3, 
-        imagesLoaded: true, 
-        hash: true,
-      }}
-    >
-      {children}
-      {post.imgs.map((img, i) => (
-        <div key={i} id={`${post.id}-${i+1}`} className="relative h-full w-full flex justify-center items-center md:items-stretch flex-col md:flex-row">
-
-          <img src={'/loading.gif'} data-flickity-lazyload={img.src} 
-            className={`min-w-0 h-full flex-shrink object-contain`} />
-
-          {img.caption &&
-            <div className={`py-2 px-2 md:py-8 flex flex-col flex-shrink md:self-end md:flex-shrink-0`}>
-              <div className={`flex whitespace-pre-line`} >
-                {img.caption.replace(/,/g, '\n')}
-              </div>
-              <Button swaped text="Contacter l'artiste" icon="right" />
-            </div>
-          }
-
-          <div className="cursor-pointer absolute top-4 right-10">
-            <ShareButton title={`J'aime une publication d'Anne Pantillon : ${post.title}`} />
+    <div className="relative">
+      <Flickity
+        static
+        className={`${styles.caroussel} w-full snap-start bg-white`}
+        options={{ cellAlign: 'left', 
+          setGallerySize: false, 
+          lazyLoad: 3, 
+          imagesLoaded: true, 
+          hash: true,
+        }}
+      >
+        <div id={`${serie.id}-0`} className="snap-start h-full w-full flex flex-col justify-center items-center text-3xl md:text-5xl">
+          <div className='px-2 md:px-14 flex-grow flex w-full h-full flex-col justify-center items-center flex-wrap'>
+            <div>{serie.title}</div>
+            <Article html={serie.html} hideFigure />
+          </div>
+          <div className="pb-4 text-center w-full text-lg text-blue-600">
+            {serie.tags.map(t => (
+              <Link key={t.slug} href={`/${t.slug}`}>
+                <a>#{t.slug} </a>
+              </Link>
+            ))}
           </div>
         </div>
-      ))}
-    </Flickity>
+
+        {serie.imgs.map((img, i) => <Photo img={img} key={i} />)}
+
+      </Flickity>
+      <ShareButton className="absolute top-4 right-4" title={`J'aime une publication d'Anne Pantillon: ${serie.title}`}/>
+    </div>
   );
 }
 
