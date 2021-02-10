@@ -37,12 +37,12 @@ const Caroussel = ({ serie }) => {
           hash: true,
         }}
       >
-        <div id={`${serie.id}-0`} className="snap-start h-full w-full flex flex-col justify-center items-center text-3xl md:text-5xl">
-          <div className='px-2 md:px-14 flex-grow flex w-full h-full flex-col justify-center items-center flex-wrap'>
-            <div>{serie.title}</div>
-            <Article html={serie.html} hideFigure />
-          </div>
-          <div className="text-center w-full">
+        <div id={`${serie.id}-0`} className="h-full w-full px-2 md:px-14 grid grid-rows-2">
+          <div className="text-3xl md:text-5xl flex justify-center items-end">{serie.title}</div>
+          <div className="flex flex-col items-center">
+            <div className="flex-grow grid grid-cols-1 md:grid-cols-3">
+              <Article html={serie.html} hideFigure className="col-start-2 text-center" />
+            </div>
             <TagList tags={serie.tags} />
           </div>
         </div>
@@ -51,7 +51,7 @@ const Caroussel = ({ serie }) => {
 
       </Flickity>
       <ShareButton className="absolute top-4 right-4" title={`J'aime une publication d'Anne Pantillon: ${serie.title}`}/>
-      <Cartel className="absolute bottom-4 right-10" caption={serie.imgs[pos - 1]?.caption} />
+      <Cartel className="absolute bottom-7 right-7" caption={serie.imgs[pos - 1]?.caption} />
       {(pos === serie.imgs.length) && 
         <div className="absolute top-1/2 right-10 cursor-pointer">
           <Icon name="left" />
