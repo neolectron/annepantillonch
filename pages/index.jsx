@@ -43,22 +43,22 @@ export default function Home({ page, news }) {
         </Flickity>
       </div>
 
-      <div className="relative z-10 flex-grow grid grid-cols-1 md:grid-cols-6 content-center">
+      <div className="relative z-10 flex-grow grid grid-cols-1 md:grid-cols-4 content-center">
 
-        <div style={{marginTop: '50%'}} className="px-2 md:px-10 col-span-2 flex flex-col justify-center">
+        <div style={{ marginTop: '50%' }} className="px-2 md:px-10 col-span-2 flex flex-col justify-center ">
           <a.h1 style={{ opacity: first.opacity, transform: first.transform.interpolate(translate) }}
             className="text-5xl md:text-8xl text-white">
             Anne Pantillon
           </a.h1>
           <a.h2 style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }}
-            className="text-2xl uppercase -mt-2 text-gray-400">
+            className="text-2xl uppercase -mt-2 text-white">
             Artiste Plasticienne
           </a.h2>
 
           {news && 
-            <div className="my-4 grid grid-cols-2">
+            <div className="my-4 mt-3 grid grid-cols-2">
               <Link href={`/posts/${news.slug}`} >
-                <a className="p-4 block shadow-xl bg-white ">
+                <a className="p-4 pt-3 block shadow-xl bg-white ">
                   <Article html={news.html} />
                 </a>
               </Link>

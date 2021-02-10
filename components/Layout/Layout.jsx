@@ -6,7 +6,7 @@ const Layout = ({ title, menuBgTransparent, mainClassName, children }) => {
   const pageTitle = title ? `- ${title}` : '- Artiste Plasticienne';
 
   return (
-    <div className="min-h-full flex flex-col bg-gray-200"> 
+    <div className="min-h-full flex flex-col bg-gray-100" > 
       <Head>
         <title>{`Anne Pantillon ${pageTitle}`}</title>
         <meta property="og:title" content={`Anne Pantillon ${pageTitle}`} key="title" />

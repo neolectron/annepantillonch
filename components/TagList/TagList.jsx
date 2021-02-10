@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
 const TagList = ({tags}) => (
-  <div className="text-lg text-blue-600">
+  <div className="text-xl text-black">
     {tags.map(t => (
       <Link key={t.slug} href={`/${t.slug}`}>
-        <a >#{t.slug} </a>
+        <a>#{t.slug} </a>
       </Link>
     ))}
   </div>

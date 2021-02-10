@@ -17,13 +17,16 @@ export default function Page({ series, article }) {
               <Button asAnchor icon="left" text="Works" />
             </Link>
           </div>
-          <Article html={article?.html} />
+          {article && <div className="py-4 flex flex-col items-center">
+            <Article html={article.html} />
+            <Button icon="down" />
+          </div>}
         </div>
-        <div className="flex flex-col gap-14">
+        <div className="flex flex-col ">
           {series.map((serie) => <Caroussel key={serie.id} serie={serie} />)}
         </div>
         <div className={`my-14 flex justify-center items-center`}>
-          <Icon name="up"/>
+          <Button icon="up"/>
         </div>
       </div>
     </Layout>
