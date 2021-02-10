@@ -1,8 +1,8 @@
 const Cartel = ({ caption, className, ...rest }) => (
-  <div className={`uppercase text-2xl whitespace-pre-line ${className}`} {...rest}>
+  caption ? <div className={`p-4 text-xl whitespace-pre-line bg-white ${className}`} {...rest} 
+  >
     {caption?.replace(/,/g, '\n')}
   </div>
+  : null
 );
-
-
 export default Cartel;
