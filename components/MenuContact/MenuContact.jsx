@@ -26,7 +26,7 @@ const MenuContact = ({menuBgTransparent}) => {
 
       return (
         <animated.div ref={contactRef} key={key} style={props} 
-          className={`fixed top-0 right-0 w-full md:w-auto md:h-full`} >
+          className={`z-20 fixed top-0 right-0 w-full md:w-auto md:h-full`} >
           <Contact />
         </animated.div>
       )
