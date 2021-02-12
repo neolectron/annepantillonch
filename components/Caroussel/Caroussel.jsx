@@ -50,8 +50,10 @@ const Caroussel = ({ serie }) => {
         {serie.imgs.map((img, i) => <Photo img={img} key={i} />)}
 
       </Flickity>
-      <ShareButton className="absolute top-4 right-4" title={`J'aime une publication d'Anne Pantillon: ${serie.title}`}/>
       <Cartel className="absolute bottom-7 right-7" caption={serie.imgs[pos - 1]?.caption} />
+      <Cartel className="flex absolute bottom-7 left-7">
+        <ShareButton title={`J'aime une publication d'Anne Pantillon: ${serie.title}`}/>
+      </Cartel>
       {(pos === serie.imgs.length) && 
         <div className="absolute top-1/2 right-10 cursor-pointer">
           <Icon name="left" />
