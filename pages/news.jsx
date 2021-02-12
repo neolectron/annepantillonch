@@ -19,7 +19,7 @@ export default function News({ news }) {
           </div>
         )}
         <div className={`my-14 flex justify-center items-center`}>
-          <Button icon="up" />
+          <Button icon="up" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}/>
         </div>
       </div>
     </Layout>

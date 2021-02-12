@@ -26,7 +26,7 @@ export default function Page({ series, article }) {
           {series.map((serie) => <Caroussel key={serie.id} serie={serie} />)}
         </div>
         <div className={`my-14 flex justify-center items-center`}>
-          <Button icon="up"/>
+          <Button icon="up" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}/>
         </div>
       </div>
     </Layout>

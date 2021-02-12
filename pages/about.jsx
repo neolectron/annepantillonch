@@ -17,7 +17,7 @@ export default function News({ about }) {
           <Article html={about.html} className="md:col-start-2" />
         </div>
         <div className={`my-14 flex justify-center items-center`}>
-          <Button icon="up" />
+          <Button icon="up" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}/>
         </div>
       </div>
     </Layout>
@@ -27,6 +27,5 @@ export default function News({ about }) {
 // Fetch necessary data for the blog post using tags
 export async function getStaticProps() {
   const about = await getPageBySlug('a-propos');
-  console.log(about)
-  return { props: { about } }
+  return { props: { about } };
 }
