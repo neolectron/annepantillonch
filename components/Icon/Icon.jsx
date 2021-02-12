@@ -2,7 +2,7 @@ import * as icons from './index';
 
 import styles from './icon.module.css';
 
-const Icon = ({name, reversed, width = 25, height = 25}) => {
+const Icon = ({name, reversed, width = 25, height = 25, className = ''}) => {
 
   const Image = icons[name];
 
@@ -11,7 +11,7 @@ const Icon = ({name, reversed, width = 25, height = 25}) => {
   }
 
   return (
-    <Image className={reversed ? styles.white : styles.black} width={width} height={height} />
+    <Image className={reversed ? styles.white : styles.black} width={width} height={height} className={className} />
   );
 };
 
