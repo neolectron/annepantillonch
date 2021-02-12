@@ -10,17 +10,15 @@ import {
   FacebookIcon,
 } from 'react-share';
 
-const isClient = typeof window !== 'undefined';
-
-const SocialIcons = ({title, className = '', ...rest}) => (
+const SocialIcons = ({title, url, className = '', ...rest}) => (
   <div className={`flex ${className}`} {...rest}>
-    <TwitterShareButton url={isClient && location.href} title={title} className="mr-2">
+    <TwitterShareButton url={url} title={title} className="mr-2">
       <TwitterIcon size={25} round />
     </TwitterShareButton>
-    <LinkedinShareButton url={isClient && location.href} title={title} className="mr-2">
+    <LinkedinShareButton url={url} title={title} className="mr-2">
       <LinkedinIcon size={25} round />
     </LinkedinShareButton>
-    <FacebookShareButton url={isClient && location.href} title={title} className="mr-2">
+    <FacebookShareButton url={url} title={title} className="mr-2">
       <FacebookIcon size={25} round />
     </FacebookShareButton>
   </div>
@@ -29,7 +27,7 @@ const SocialIcons = ({title, className = '', ...rest}) => (
 const AButton = animated(Button);
 const ASocialIcons = animated(SocialIcons);
 
-const ShareButton = ({title, className = ''}) => {
+const ShareButton = ({title, url, className = ''}) => {
 
   const [opened, setOpen] = useState(false);
   const transitions = useTransition(opened, null, {
@@ -48,7 +46,7 @@ const ShareButton = ({title, className = ''}) => {
 
   return transitions.map(({item, key, props}) => 
     item 
-      ? <ASocialIcons key={key} style={props} title={title} className={className} />
+      ? <ASocialIcons key={key} style={props} title={title} url={url} className={className} />
       : <AButton key={key} style={props} icon="share" onClick={() => setOpen(true)}  className={className} />
   );
 
