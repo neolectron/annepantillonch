@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useClickAway, useKey, useMedia } from 'react-use';
 import { animated, useSpring, config } from 'react-spring';
+import Icon from "../Icon/Icon.jsx";
+import Button from "../Button/Button.jsx";
 
 import styles from './menu.module.css';
-import Icon from "../Icon/Icon";
 
 const Menu = ({children, Bgtransparent}) => {
   const menuRef = useRef(null);
@@ -33,8 +34,6 @@ const Menu = ({children, Bgtransparent}) => {
 
   }, [listRef, open, isDesktop, spring, setSpring, stop]);
 
-    console.log(`we're on ${isDesktop ? 'desktop':'mobile'}, and menu is ${open ? 'open' : 'closed'}`);
-
   return (
     <animated.div
       className={`z-20 fixed top-0 right-0 flex flex-col h-auto w-full
@@ -47,33 +46,31 @@ const Menu = ({children, Bgtransparent}) => {
     >
 
       <div className="w-full h-14 flex items-center p-2">
-        <svg xmlns="http://www.w3.org/2000/svg" className="cursor-pointer transform hover:scale-110" viewBox="0 0 32 32" width="32" height="32" focusable="false">
-          <path stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path>
-        </svg>
+        <Icon name="burger" width="32" height="32" className="cursor-pointer transform hover:scale-110" />
       </div>
 
-      <animated.div className="w-full " style={{ overflow: 'hidden', height : spring.height }}>
-        <div ref={listRef}>
-          <nav className={`${styles.menuChildren} w-full flex flex-col text-xl uppercase select-none`}>
+      <animated.div className="w-full flex-grow" style={{ overflow: 'hidden', height : spring.height }}>
+        <div ref={listRef} className="w-full md:h-full flex flex-col">
+          <nav className={`${styles.menuChildren} w-full flex-grow flex flex-col text-xl uppercase select-none`}>
             {children}
           </nav>
-          <div className={`flex ml-14 items-start justify-start`}>
-            <a href="https://www.linkedin.com/in/anne-pantillon-3b1b7468/" target="_blank"
-              className="m-2 ml-0 transform hover:scale-110">
-              <Icon name="linkedin" reversed={Bgtransparent} />
-            </a>
-            <a href="https://www.instagram.com/anne_pantillon/" target="_blank"
-            className="m-2 transform hover:scale-110">
-              <Icon name="instagram" reversed={Bgtransparent} />
-            </a>
-            <a href="https://www.youtube.com/channel/UCJ7Zo_T1yTfsNVWu6REvi_w" target="_blank" 
-            className="m-2 transform hover:scale-110">
-              <Icon name="youtube" reversed={Bgtransparent} />
-            </a>
-            <a href="https://www.facebook.com/atelier.anne.pantillon" target="_blank" 
-            className="m-2 ml-0 transform hover:scale-110">
-              <Icon name="facebook" reversed={Bgtransparent} />
-            </a>
+          <div className={`flex ml-14 mb-2 items-start justify-start`}>
+            <Button asAnchor 
+              target="_blank" href="https://www.linkedin.com/in/anne-pantillon-3b1b7468/" 
+              icon="linkedin" reversed={Bgtransparent} 
+              className="m-2 ml-0 transform hover:scale-110" />
+            <Button asAnchor
+              target="_blank" href="https://www.instagram.com/anne_pantillon/"
+              icon="instagram" reversed={Bgtransparent}
+              className="m-2 transform hover:scale-110" />
+            <Button asAnchor
+              target="_blank" href="https://www.youtube.com/channel/UCJ7Zo_T1yTfsNVWu6REvi_w"
+              icon="youtube" reversed={Bgtransparent}
+              className="m-2 transform hover:scale-110" />
+            <Button asAnchor
+              target="_blank" href="https://www.facebook.com/atelier.anne.pantillon"
+              icon="facebook" reversed={Bgtransparent}
+              className="m-2 ml-0 transform hover:scale-110" />
           </div>
         </div>
       </animated.div>
