@@ -3,6 +3,7 @@ import Article from '../Article/Article.jsx';
 import Photo from '../Photo/Photo.jsx';
 import TagList from '../TagList/TagList.jsx';
 import ShareButton from '../ShareButton/ShareButton.jsx';
+import Button from '../Button/Button.jsx';
 import Cartel from '../Cartel/Cartel.jsx';
 import Icon from '../Icon/Icon.jsx';
 
@@ -22,6 +23,8 @@ const Caroussel = ({ serie }) => {
     return () => flickity.current.off('change', setPos);
 
   }, [pos, setPos]);
+
+  const isClient = typeof window !== 'undefined';
 
   return (
     <div className="relative">
@@ -52,7 +55,10 @@ const Caroussel = ({ serie }) => {
       </Flickity>
       <Cartel className="absolute bottom-7 right-7" caption={serie.imgs[pos - 1]?.caption} />
       <Cartel className="flex absolute bottom-7 left-7">
-        <ShareButton title={`J'aime une publication d'Anne Pantillon: ${serie.title}`}/>
+        <ShareButton url={isClient && location.href} title={`J'aime une publication d'Anne Pantillon: ${serie.title}`} className="mr-2"/>
+        <Button asAnchor icon="email" 
+          href={`mailto:atelier.annepantillon@gmail.com?body=A propos de ${pos ? `l'œuvre ${pos} de ` : ' '}la série ${serie.title}
+          ${isClient && location.href}`}/>
       </Cartel>
       {(pos === serie.imgs.length) && 
         <div className="absolute top-1/2 right-10 cursor-pointer">
