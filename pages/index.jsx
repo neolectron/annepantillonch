@@ -56,7 +56,7 @@ export default function Home({ page, news }) {
           </a.h2>
 
           {news && 
-            <div className="my-4 mt-3 grid grid-cols-2">
+            <div className="my-4 mt-3 grid grid-cols-1 md:grid-cols-2">
               <Link href={`/posts/${news.slug}`} >
                 <a className="p-4 pt-3 block shadow-xl bg-white ">
                   <Article html={news.html} />
