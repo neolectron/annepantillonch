@@ -30,6 +30,10 @@ body {
   scroll-snap-align: start;
 }
 
+.alternate-bg:nth-child(even) {
+  background-color: white;
+}
+
 .undefined {
   background-color: red !important;
 }

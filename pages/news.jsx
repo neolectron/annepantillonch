@@ -6,20 +6,21 @@ import Link from 'next/link';
 
 export default function News({ news }) {
   return (
-    <Layout title="news">
-      <div className="p-8">
-        <Link href="/works">
-          <a>
-            <Button asAnchor icon="left">Works</Button>
-          </a>
-        </Link>
-        {news?.map((n) => 
-          <Link key={n.slug} href={`/posts/${n.slug}`}>
-            <a className={`block p-8 border border-gray-400 w-max bg-white rounded-sm`}>
-              <Article html={n.html} />
-            </a>
+    <Layout title={'news'}>
+      <div className="flex flex-col">
+        <div className="p-4">
+          <Link href="/works">
+            <Button asAnchor icon="left" text="Works" />
           </Link>
+        </div>
+        {news?.map((article) => 
+          <div className="px-2 md:px-10 py-10 my-4 grid grid-cols-1 md:grid-cols-3 alternate-bg">
+            <Article html={article.html} className="md:col-start-2" />
+          </div>
         )}
+        <div className={`my-14 flex justify-center items-center`}>
+          <Button icon="up" />
+        </div>
       </div>
     </Layout>
   )
