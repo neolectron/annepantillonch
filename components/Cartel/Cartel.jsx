@@ -1,4 +1,7 @@
-const transformCaption = (caption) => caption?.replace(/,/g, '\n');
+const transformCaption = (caption) => caption
+  ?.replace(/,/g, '\n')
+  .replace('vendu','')
+  .replace(' x ', ' × ')
 
 const Cartel = ({ caption, children, className = '', ...rest }) => {
   if(!children && !caption) return null;
@@ -7,6 +10,10 @@ const Cartel = ({ caption, children, className = '', ...rest }) => {
       {...rest}
     >
       {children || transformCaption(caption)}
+      { caption?.includes('vendu') 
+        &&
+        <div className="absolute bottom-2 right-2 h-2 w-2 bg-red-500 rounded"></div>
+      }
     </div>
   );
 }
