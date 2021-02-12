@@ -7,3 +7,4 @@ export { default as facebook } from './icons/facebook.svg';
 export { default as instagram } from './icons/instagram.svg';
 export { default as linkedin } from './icons/linkedin.svg';
 export { default as youtube } from './icons/youtube.svg';
+export { default as share } from './icons/share.svg';
