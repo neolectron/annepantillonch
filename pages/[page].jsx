@@ -23,10 +23,10 @@ export default function Page({ series, article }) {
           </div>}
         </div>
         <div className="flex flex-col ">
-          {series.map((serie) => <Caroussel key={serie.id} serie={serie} />)}
+          { series.map((serie, i) => <Caroussel key={serie.id} serie={serie} snap={i} />) }
         </div>
         <div className={`my-14 flex justify-center items-center`}>
-          <Button icon="up" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}/>
+          <Button icon="up" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
         </div>
       </div>
     </Layout>
@@ -40,7 +40,7 @@ export async function getStaticPaths() {
   const tags = await getTagList();
 
   return { 
-    paths: tags.filter(t => t.slug !== 'news')
+    paths: tags.filter(t => (t.slug !== 'news') && (t.slug !== 'about') )
       .map((tag) => ({ params: { page: tag.slug } })),
     fallback: false,
   }

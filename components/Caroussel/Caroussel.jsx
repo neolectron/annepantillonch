@@ -5,12 +5,11 @@ import TagList from '../TagList/TagList.jsx';
 import ShareButton from '../ShareButton/ShareButton.jsx';
 import Button from '../Button/Button.jsx';
 import Cartel from '../Cartel/Cartel.jsx';
-import Icon from '../Icon/Icon.jsx';
 
 import styles from './caroussel.module.css';
 import { useEffect, useRef, useState } from 'react';
 
-const Caroussel = ({ serie }) => {
+const Caroussel = ({ serie, snap = true }) => {
 
   const flickity = useRef(null);
   const [pos, setPos] = useState(0);
@@ -31,7 +30,7 @@ const Caroussel = ({ serie }) => {
       <Flickity
         static
         flickityRef={ref => flickity.current = ref}
-        className={`${styles.caroussel} w-full snap-start bg-white`}
+        className={`${styles.caroussel} w-full ${snap ? 'snap-start' : ''} bg-white`}
         options={{ 
           cellAlign: 'left', 
           setGallerySize: false, 
@@ -62,7 +61,7 @@ const Caroussel = ({ serie }) => {
       </Cartel>
       {(pos === serie.imgs.length) && 
         <div className="absolute top-1/2 right-10 cursor-pointer">
-          <Icon name="left" />
+          <Button icon="left" onClick={() => flickity.current.selectCell(0)} />
         </div>
       }
     </div>
