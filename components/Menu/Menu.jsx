@@ -37,8 +37,8 @@ const Menu = ({children, Bgtransparent}) => {
   return (
     <animated.div
       className={`z-20 fixed top-0 right-0 flex flex-col h-auto w-full
-      md:h-full md:w-72 md:border-l md:border-b-0
-      ${Bgtransparent ? 'bg-transparent text-white border-white' : 'bg-white text-black border-black' }
+      md:h-full md:w-72  md:border-b-0 md:border-l
+      ${Bgtransparent ? 'bg-opacity-30 bg-black text-white border-white' : 'bg-white text-black border-black' }
       border-b border-opacity-20`}
       style={{ transform: spring.translate.interpolate(x => `translate3d(${x}px,0,0)`), backdropFilter: `blur(5px)` }}
       onClick={() => setOpen(!open)}

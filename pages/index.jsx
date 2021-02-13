@@ -44,21 +44,30 @@ export default function Home({ page, news }) {
       </div>
 
       <div className="relative z-10 flex-grow grid grid-cols-1 md:grid-cols-4 content-center">
+        <Link href="/works">
+          <a.a style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }}
+            className="hidden md:block z-10 fixed top-1 left-10 py-2 cursor-pointer text-gray-300">
+            <Button reversed swaped text="ANNE PANTILLON" />
+          </a.a>
+        </Link>
 
-        <div style={{ marginTop: '50%' }} className="px-2 md:px-10 col-span-2 flex flex-col justify-center ">
+        <Link href="/works">
+          <a.a style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }}
+            className="hidden md:block z-10 fixed top-1 right-14 py-2 px-4 cursor-pointer text-gray-300">
+            <Button reversed swaped icon="right" text="Travaux" />
+          </a.a>
+        </Link>
+
+        <div className="px-2 col-span md:px-10 col-span-2 flex flex-col justify-center col-start-2">
           <a.h1 style={{ opacity: first.opacity, transform: first.transform.interpolate(translate) }}
-            className="text-5xl md:text-8xl text-white">
-            Anne Pantillon
+            className="text-center text-5xl md:text-8xl text-white">
+            Actualités
           </a.h1>
-          <a.h2 style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }}
-            className="text-2xl uppercase -mt-2 text-white">
-            Artiste Plasticienne
-          </a.h2>
 
           {news && 
-            <div className="my-4 mt-3 grid grid-cols-1 md:grid-cols-2">
+            <div className="grid grid-cols-1 md:grid-cols-4">
               <Link href={`/posts/${news.slug}`} >
-                <a className="p-4 pt-3 block shadow-xl bg-white ">
+                <a className="col-start-2 col-span-2 p-4 pt-3 block shadow-xl bg-black bg-opacity-30 text-white">
                   <Article html={news.html} />
                 </a>
               </Link>
@@ -66,13 +75,6 @@ export default function Home({ page, news }) {
           }
         </div>
       </div>
-
-      <Link href="/works">
-        <a.a style={{ opacity: second.opacity, transform: second.transform.interpolate(translate) }} 
-        className="hidden md:block z-10 fixed top-1 right-14 py-2 px-4 cursor-pointer text-gray-300">
-          <Button reversed swaped icon="right" text="Works" />
-        </a.a>
-      </Link>
 
     </Layout>
   )

@@ -12,7 +12,7 @@ const Cartel = ({ caption, children, className = '', ...rest }) => {
       {children || transformCaption(caption)}
       { caption?.includes('vendu') 
         &&
-        <div className="absolute bottom-2 right-2 h-2 w-2 bg-red-500 rounded"></div>
+        <div className="absolute bottom-2 right-2 h-3 w-3 bg-red-500 rounded-full"></div>
       }
     </div>
   );

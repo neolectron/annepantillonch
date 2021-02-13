@@ -14,10 +14,10 @@ export default function Page({ series, article }) {
         <div className="px-2 md:px-10 grid grid-cols-1 md:grid-cols-3">
           <div className="p-4">
             <Link href="/works">
-              <Button asAnchor icon="left" text="Works" />
+              <Button asAnchor icon="left" text="Travaux" />
             </Link>
           </div>
-          {article && <div className="py-4 flex flex-col items-center">
+          {article && article.html && <div className="py-4 flex flex-col items-center">
             <Article html={article.html} />
             <Button icon="down" />
           </div>}

@@ -4,6 +4,8 @@ import styles from './icon.module.css';
 
 const Icon = ({name, reversed, width = 25, height = 25, className = ''}) => {
 
+  if(!name) return null;
+
   const Image = icons[name];
 
   if(!Image) {

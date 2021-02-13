@@ -9,8 +9,8 @@ export default function News({ news }) {
     <Layout title={'news'}>
       <div className="flex flex-col">
         <div className="p-4">
-          <Link href="/works">
-            <Button asAnchor icon="left" text="Works" />
+          <Link href="/">
+            <Button asAnchor icon="left" text="ACCUEIL" />
           </Link>
         </div>
         {news?.map((article) => 

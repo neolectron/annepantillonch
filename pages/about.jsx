@@ -14,7 +14,7 @@ export default function News({ about }) {
           </Link>
         </div>
         <div className="px-2 md:px-10 py-10 my-4 grid grid-cols-1 md:grid-cols-6 alternate-bg">
-          <Article html={about.html} className="md:col-start-2 md:col-span-2" />
+          <Article html={about.html} className="md:col-start-3 md:col-span-3" />
         </div>
         <div className={`my-14 flex justify-center items-center hidden`}>
           <Button icon="up" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}/>
