@@ -17,7 +17,7 @@ const Contact = () => {
         </address>
 
         <Button asLink href="mailto:atelier.annepantillon@gmail.com"
-        className="transform-none underline text-2xl">
+        className="normal-case transform-none underline text-2xl">
           atelier.anne.pantillon@gmail.com
         </Button>
 
