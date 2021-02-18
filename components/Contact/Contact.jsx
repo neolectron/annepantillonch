@@ -16,7 +16,7 @@ const Contact = () => {
           1004 Lausanne, Suisse
         </address>
 
-        <Button asLink href="mailto:atelier.annepantillon@gmail.com"
+        <Button asAnchor href="mailto:atelier.annepantillon@gmail.com"
         className="normal-case transform-none underline text-2xl">
           atelier.anne.pantillon@gmail.com
         </Button>
