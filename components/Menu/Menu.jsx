@@ -45,7 +45,7 @@ const Menu = ({children, Bgtransparent}) => {
       ref={menuRef}
     >
 
-      <div className="w-full h-14 flex items-center p-2">
+      <div className="w-full h-14 flex  p-2" style={{ paddingLeft: 9, paddingTop: 11 }}>
         <Icon name="burger" width="32" height="32" className="cursor-pointer transform hover:scale-110" />
       </div>
 

@@ -10,14 +10,14 @@ const Contact = () => {
       <img src="profil.jpg" alt="photo de profil" className="h-48" />
       <div className="h-full flex flex-col items-center justify-center p-4 pt-8">
 
-        <address className="text-center text-2xl not-italic">
+        <address className="text-center text-xl not-italic">
           Anne Pantillon<br />
           Rue de Sébeillon 9a<br />
           1004 Lausanne, Suisse
         </address>
 
         <Button asAnchor href="mailto:atelier.annepantillon@gmail.com"
-        className="normal-case transform-none underline text-2xl">
+        className="normal-case transform-none underline text-xl">
           atelier.anne.pantillon@gmail.com
         </Button>
 

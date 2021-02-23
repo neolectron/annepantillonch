@@ -52,7 +52,7 @@ export default function Home({ page, news }) {
             opacity: second.opacity,
             transform: second.transform.interpolate(translate),
           }}
-          className="text-2xl hidden md:block z-10 fixed top-1 left-10 py-2 text-gray-300"
+          className="text-2xl hidden md:block z-10 fixed top-1 left-7 py-2 text-gray-300"
         >
           ANNE PANTILLON
         </a.div>
@@ -82,7 +82,7 @@ export default function Home({ page, news }) {
 
           {news && (
             <div className="grid grid-cols-1 md:grid-cols-4">
-              <Link href={`/posts/${news.slug}`}>
+              <Link /*href={`/posts/${news.slug}`}*/ href="/news">
                 <a className="col-start-2 col-span-2 p-4 pt-3 block shadow-xl bg-black bg-opacity-30 text-white">
                   <Article html={news.html} />
                 </a>

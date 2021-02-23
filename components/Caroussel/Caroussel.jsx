@@ -37,6 +37,7 @@ const Caroussel = ({ serie, snap = true }) => {
           lazyLoad: 3, 
           imagesLoaded: true, 
           hash: true,
+          friction: 0.5,
         }}
       >
         <div id={`${serie.id}-0`} className="h-full w-full px-2 md:px-14 grid grid-rows-2">
@@ -59,6 +60,7 @@ const Caroussel = ({ serie, snap = true }) => {
         </Cartel>
         <Cartel className="flex" >
           <Button asAnchor icon="email"
+            className=""
             href={`mailto:atelier.annepantillon@gmail.com?body=A propos de ${pos ? `l'œuvre ${pos} de ` : ' '}la série ${serie.title}
           ${isClient && location.href}`} />
         </Cartel>
