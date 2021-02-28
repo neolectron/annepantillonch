@@ -1,23 +1,29 @@
 import Head from 'next/head';
 import MenuContact from '../MenuContact/MenuContact.jsx';
 
-const Layout = ({ title, menuBgTransparent, mainClassName, children }) => {
-
-  const pageTitle = title ? `- ${title}` : '- Artiste Plasticienne';
+const Layout = ({
+  title = 'Artiste Plasticienne',
+  menuBgTransparent,
+  className = '',
+  children,
+}) => {
+  const pageTitle = `Anne Pantillon - ${title}`;
 
   return (
-    <div className="min-h-full flex flex-col bg-gray-100" > 
+    <div className="flex flex-col min-h-full bg-gray-100">
       <Head>
-        <title>{`Anne Pantillon ${pageTitle}`}</title>
-        <meta property="og:title" content={`Anne Pantillon ${pageTitle}`} key="title" />
+        <title>{pageTitle}</title>
+        <meta property="og:title" content={pageTitle} key="title" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`flex-grow flex flex-col mt-14 md:mt-0 md:mr-12 ${mainClassName || ''}`}>
+      <main
+        className={`flex-grow flex flex-col mt-14 md:mt-0 md:mr-12 ${className}`}
+      >
         {children}
       </main>
       <MenuContact menuBgTransparent={menuBgTransparent} />
     </div>
   );
-}
+};
 
-export default Layout
+export default Layout;
