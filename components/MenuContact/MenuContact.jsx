@@ -37,6 +37,7 @@ const MenuContact = ({menuBgTransparent}) => {
       <Link href="/news"><a>ACTUALITÉS</a></Link>
       <Link href="/works"><a>TRAVAUX</a></Link>
       <Link href="/about"><a>À PROPOS</a></Link>
+      <Link href="/press"><a>PRESSE</a></Link>
       <a href="#" onClick={() => set(x => !x)}>CONTACT</a>
     </Menu>
   </>)
