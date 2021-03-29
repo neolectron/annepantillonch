@@ -19,7 +19,7 @@ export default function Home({ page, news }) {
   return (
     <Layout className="bg-anne bg-cover text-white">
       <Header backText="ANNE PANTILLON" goText="TRAVAUX" goTo="/works" />
-      <div className="flex-grow grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 content-center bg-cover bg-no-repeat">
+      <div className="flex-grow grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 content-center">
         <div className="px-2 col-span md:px-10 col-span-2 flex flex-col justify-center col-start-2">
           <a.h1
             style={{
