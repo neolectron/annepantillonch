@@ -3,7 +3,6 @@ import MenuContact from '../MenuContact/MenuContact.jsx';
 
 const Layout = ({
   title = 'Artiste Plasticienne',
-  menuBgTransparent,
   className = '',
   children,
 }) => {
@@ -21,7 +20,7 @@ const Layout = ({
       >
         {children}
       </main>
-      <MenuContact menuBgTransparent={menuBgTransparent} />
+      <MenuContact />
     </div>
   );
 };
