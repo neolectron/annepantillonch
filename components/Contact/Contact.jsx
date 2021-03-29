@@ -3,10 +3,9 @@ import Button from '../Button/Button.jsx';
 const Contact = () => {
   return (
     <div
-      className={`flex flex-col mt-12 text-black
+      className={`flex flex-col mt-14 text-black
     bg-white overflow-hidden
       md:h-full md:mr-12 md:mt-0 md:w-auto`}
-      style={{ minWidth: '400px' }}
     >
       <img src="profil.jpg" alt="photo de profil" className="h-48" />
       <div className="h-full flex flex-col items-center justify-center p-4 pt-8">
