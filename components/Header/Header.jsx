@@ -12,7 +12,13 @@ const Header = ({ backTo, backText, title = null, goTo, goText }) => (
     {title && <div className="flex justify-center col-start-2">{title}</div>}
     {goTo && (
       <Link href={goTo}>
-        <Button asAnchor icon="right" text={goText || 'Suivant'} />
+        <Button
+          asAnchor
+          swaped
+          icon="right"
+          text={goText || 'Suivant'}
+          className="col-start-3 justify-self-end"
+        />
       </Link>
     )}
   </header>
