@@ -3,7 +3,9 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&display=swap');
 
-html, body, #__next {
+html,
+body,
+#__next {
   font-family: 'Sorts Mill Goudy', serif;
   height: 100%;
   scroll-snap-type: y proximity;
@@ -11,6 +13,10 @@ html, body, #__next {
 
 body {
   overflow-x: hidden;
+}
+
+.bg-anne {
+  background-image: url('/technique.png');
 }
 
 .bg-zoom {
