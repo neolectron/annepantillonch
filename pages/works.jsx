@@ -19,7 +19,7 @@ export default function Works({ pageList }) {
             text-xl md:text-2xl md:whitespace-nowrap text-white text-center uppercase
             bg-zoom bg-center duration-1000 ease-in-out`}
               style={{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${page.feature_image})`,
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${page.feature_image})`,
                 flexBasis: `${Math.random() > 0.5 ? 30 : 45}%`,
               }}
             >
