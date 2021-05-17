@@ -9,3 +9,4 @@ export { default as linkedin } from './icons/linkedin.svg';
 export { default as youtube } from './icons/youtube.svg';
 export { default as share } from './icons/share.svg';
 export { default as email } from './icons/email.svg';
+export { default as flickityArrow } from './icons/flickityArrow.svg';
