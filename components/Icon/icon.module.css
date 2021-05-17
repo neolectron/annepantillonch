@@ -1,7 +1,3 @@
-.white path {
-  fill : white;
-}
-
-.black path {
-  fill: black;
+.reversed {
+  filter: invert(1);
 }
