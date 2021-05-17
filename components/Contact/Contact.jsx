@@ -8,8 +8,8 @@ const Contact = () => {
       md:h-full md:mr-12 md:mt-0 md:w-auto`}
     >
       <img src="profil.jpg" alt="photo de profil" className="h-48" />
-      <div className="h-full flex flex-col items-center justify-center p-4 pt-8">
-        <address className="text-center text-xl not-italic">
+      <div className="flex flex-col items-center justify-center h-full p-4 pt-8 text-xl">
+        <address className="not-italic text-center">
           Anne Pantillon
           <br />
           Rue de Sébeillon 9a
@@ -17,13 +17,13 @@ const Contact = () => {
           1004 Lausanne, Suisse
         </address>
 
-        <Button
-          asAnchor
-          href="mailto:atelier.annepantillon@gmail.com"
-          className="normal-case transform-none underline text-xl"
-        >
+        <Button asAnchor href="mailto:atelier.annepantillon@gmail.com" className="underline normal-case transform-none">
           atelier.anne.pantillon@gmail.com
         </Button>
+
+        <a className="text-2xl text-shadow" href="tel:+41794144522">
+          +41 79 414 45 22
+        </a>
       </div>
     </div>
   );
