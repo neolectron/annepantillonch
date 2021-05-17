@@ -10,17 +10,14 @@ import styles from './caroussel.module.css';
 import { useEffect, useRef, useState } from 'react';
 
 const Caroussel = ({ serie, snap = true }) => {
-
   const flickity = useRef(null);
   const [pos, setPos] = useState(0);
 
   useEffect(() => {
-    if(!flickity.current)
-      return null;
+    if (!flickity.current) return null;
 
     flickity.current.on('change', setPos);
     return () => flickity.current.off('change', setPos);
-
   }, [pos, setPos]);
 
   const isClient = typeof window !== 'undefined';
@@ -29,13 +26,13 @@ const Caroussel = ({ serie, snap = true }) => {
     <div className="relative">
       <Flickity
         static
-        flickityRef={ref => flickity.current = ref}
+        flickityRef={(ref) => (flickity.current = ref)}
         className={`${styles.caroussel} w-full ${snap ? 'snap-start' : ''} bg-white`}
-        options={{ 
-          cellAlign: 'left', 
-          setGallerySize: false, 
-          lazyLoad: 3, 
-          imagesLoaded: true, 
+        options={{
+          cellAlign: 'left',
+          setGallerySize: false,
+          lazyLoad: 3,
+          imagesLoaded: true,
           hash: true,
           friction: 0.5,
         }}
@@ -50,28 +47,42 @@ const Caroussel = ({ serie, snap = true }) => {
           </div>
         </div>
 
-        {serie.imgs.map((img, i) => <Photo img={img} key={i} />)}
-
+        {serie.imgs.map((img, i) => (
+          <Photo img={img} key={i} />
+        ))}
       </Flickity>
+
       <Cartel className="absolute bottom-7 right-7" caption={serie.imgs[pos - 1]?.caption} />
       <div className="absolute flex bottom-7 left-7">
-        <Cartel className="flex mr-2" >
-          <ShareButton url={isClient && location.href} title={`J'aime une publication d'Anne Pantillon: ${serie.title}`} />
+        <Cartel className="flex mr-2">
+          <ShareButton
+            url={isClient && location.href}
+            title={`J'aime une publication d'Anne Pantillon: ${serie.title}`}
+          />
         </Cartel>
-        <Cartel className="flex" >
-          <Button asAnchor icon="email"
+        <Cartel className="flex">
+          <Button
+            asAnchor
+            icon="email"
             className=""
-            href={`mailto:atelier.annepantillon@gmail.com?body=A propos de ${pos ? `l'œuvre ${pos} de ` : ' '}la série ${serie.title}
-          ${isClient && location.href}`} />
+            href={`mailto:atelier.annepantillon@gmail.com?body=A propos de ${
+              pos ? `l'œuvre ${pos} de ` : ' '
+            }la série ${serie.title}
+          ${isClient && location.href}`}
+          />
         </Cartel>
       </div>
-      {(pos === serie.imgs.length) && 
-        <div className="absolute top-1/2 right-10 cursor-pointer">
-          <Button icon="left" onClick={() => flickity.current.selectCell(0)} />
-        </div>
-      }
+      {pos === serie.imgs.length && (
+        <Button
+          reversed
+          className="flickity-button flickity-prev-next-button next"
+          icon="flickityArrow"
+          iconClassName="flickity-button-icon"
+          onClick={() => flickity.current.selectCell(0)}
+        />
+      )}
     </div>
   );
-}
+};
 
 export default Caroussel;
