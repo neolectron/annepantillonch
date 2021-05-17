@@ -1,11 +1,7 @@
 import Head from 'next/head';
 import MenuContact from '../MenuContact/MenuContact.jsx';
 
-const Layout = ({
-  title = 'Artiste Plasticienne',
-  className = '',
-  children,
-}) => {
+const Layout = ({ title = 'Artiste Plasticienne', className = '', children }) => {
   const pageTitle = `Anne Pantillon - ${title}`;
 
   return (
@@ -15,11 +11,7 @@ const Layout = ({
         <meta property="og:title" content={pageTitle} key="title" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main
-        className={`flex-grow flex flex-col mt-14 md:mt-0 md:mr-12 ${className}`}
-      >
-        {children}
-      </main>
+      <main className={className || 'flex-grow flex flex-col mt-14 md:mt-0 md:mr-12'}>{children}</main>
       <MenuContact />
     </div>
   );

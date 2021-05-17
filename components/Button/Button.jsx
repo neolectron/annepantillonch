@@ -17,8 +17,10 @@ const Button = ({
   return (
     <Wrap
       asAnchor={asAnchor}
-      className={`flex w-max uppercase text-2xl 
-    focus:outline-none transform transition-transform hover:scale-105 cursor-pointer ${className}`}
+      className={
+        className ||
+        'flex w-max uppercase text-2xl focus:outline-none transform transition-transform hover:scale-105 cursor-pointer'
+      }
       {...rest}
     >
       {swaped || <Icon reversed={reversed} name={icon} className={iconClassName} />}
