@@ -19,7 +19,7 @@ const Button = ({
       asAnchor={asAnchor}
       className={
         className ||
-        'flex w-max uppercase text-2xl focus:outline-none transform transition-transform hover:scale-105 cursor-pointer'
+        'flex items-center w-max uppercase text-2xl focus:outline-none transform transition-transform hover:scale-105 cursor-pointer'
       }
       {...rest}
     >
