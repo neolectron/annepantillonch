@@ -40,7 +40,10 @@ body {
   background-color: white;
 }
 
+/* anti con */
 .undefined {
+  outline: dashed red !important;
+  color: red !important;
   background-color: red !important;
 }
 
