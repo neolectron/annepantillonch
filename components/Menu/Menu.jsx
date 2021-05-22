@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useClickAway, useKey, useMedia } from 'react-use';
 import { animated, useSpring, config } from 'react-spring';
 import Icon from '../Icon/Icon.jsx';
@@ -16,31 +16,38 @@ const Menu = ({ children }) => {
   useKey('Escape', () => setOpen(false));
   const isDesktop = useMedia('(min-width: 768px)');
 
-  const [spring, setSpring, stop] = useSpring(() => ({
-    from: { translate: 0, height: 0 },
-    config: config.stiff,
-  }));
+  const springConfig = useCallback(
+    () => ({
+      config: config.stiff,
+      immediate: open === null,
+    }),
+    [open]
+  );
+
+  const [menuSpring, menuApi] = useSpring(springConfig);
+  const [listSpring, listApi] = useSpring(springConfig);
 
   useEffect(() => {
-    stop();
+    if (!listRef.current) return;
+
     const { width, height } = listRef.current.getBoundingClientRect();
-    // open === null is here to check if the animation run for the first time
+
     if (isDesktop) {
-      // 48 is 3rem, which is w-12 in tailwind
-      setSpring({
-        height: height,
-        translate: open ? 0 : width - 48,
-        immediate: open === null,
-      });
+      const styles = {
+        translateX: open ? 0 : width - 48,
+        translateY: 0,
+      };
+      menuApi.start(styles);
+      listApi.start({ ...styles, height });
     } else {
-      // 56px is 3.5rem, which is h-14 in tailwind
-      setSpring({
-        height: open ? height : 0,
-        translate: 0,
-        immediate: open === null,
-      });
+      const styles = {
+        translateY: 0,
+        translateX: 0,
+      };
+      listApi.start({ ...styles, height: open ? height : 0 });
+      menuApi.start(styles);
     }
-  }, [listRef, open, isDesktop, spring, setSpring, stop]);
+  }, [isDesktop, menuApi, listApi, listRef, open]);
 
   return (
     <animated.div
@@ -48,35 +55,18 @@ const Menu = ({ children }) => {
       md:h-full md:w-72  md:border-b-0 md:border-l
       bg-white text-black border-black
       border-b border-opacity-20`}
-      style={{
-        transform: spring.translate.interpolate(
-          (x) => `translate3d(${x}px,0,0)`
-        ),
-        backdropFilter: `blur(5px)`,
-      }}
+      style={menuSpring}
       onClick={() => setOpen(!open)}
       ref={menuRef}
     >
-      <div
-        className="w-full h-14 flex  p-2"
-        style={{ paddingLeft: 9, paddingTop: 11 }}
-      >
-        <Icon
-          name="burger"
-          width="32"
-          height="32"
-          className="cursor-pointer transform hover:scale-110"
-        />
+      <div className="flex w-full p-2 pt-3 pl-2 h-14">
+        <Icon name="burger.svg" width="32" height="32" className="transform cursor-pointer hover:scale-110" />
       </div>
 
-      <animated.div
-        className="w-full flex-grow"
-        style={{ overflow: 'hidden', height: spring.height }}
-      >
-        <div ref={listRef} className="w-full md:h-full flex flex-col">
-          <nav
-            className={`${styles.menuChildren} w-full flex-grow flex flex-col text-xl uppercase select-none`}
-          >
+      {/* Menu Items List */}
+      <animated.div className="flex-grow w-full overflow-hidden" style={listSpring}>
+        <div ref={listRef} className="flex flex-col w-full md:h-full">
+          <nav className={`${styles.menuChildren} w-full flex-grow flex flex-col text-xl uppercase select-none`}>
             {children}
           </nav>
           <div className={`flex ml-14 mb-2 items-start justify-start`}>
