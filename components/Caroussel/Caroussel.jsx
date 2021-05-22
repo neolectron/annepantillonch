@@ -52,15 +52,18 @@ const Caroussel = ({ serie, snap = true }) => {
         ))}
       </Flickity>
 
-      <Cartel className="absolute bottom-7 right-7" caption={serie.imgs[pos - 1]?.caption} />
+      <div className="absolute bottom-7 right-7">
+        <Cartel caption={serie.imgs[pos - 1]?.caption} />
+      </div>
+
       <div className="absolute flex bottom-7 left-7">
-        <Cartel className="flex mr-2">
-          <ShareButton
-            url={isClient && location.href}
-            title={`J'aime une publication d'Anne Pantillon: ${serie.title}`}
-          />
-        </Cartel>
-        <Cartel className="flex">
+        <Cartel>
+          <div className="mr-4">
+            <ShareButton
+              url={isClient && location.href}
+              title={`J'aime une publication d'Anne Pantillon: ${serie.title}`}
+            />
+          </div>
           <Button
             asAnchor
             target="_blank"
