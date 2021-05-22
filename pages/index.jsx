@@ -1,45 +1,38 @@
 import Layout from '../components/Layout/Layout.jsx';
 import Article from '../components/Article/Article.jsx';
 import Header from '../components/Header/Header.jsx';
-import { useCallback } from 'react';
-import { a, config, useTrail } from 'react-spring';
+import { a, config, useSpring } from 'react-spring';
 import { getPageBySlug, getPostListFeatured } from '../lib/ghost.js';
 import Link from 'next/link';
 
-export default function Home({ page, news }) {
-  const [[first, second]] = useTrail(2, () => ({
-    from: { opacity: 0, transform: -30 },
-    to: { opacity: 1, transform: 0 },
+export default function Home({ news }) {
+  const props = useSpring({
+    from: { opacity: 0, transform: 'translateX(-30px)' },
+    to: { opacity: 1, transform: 'translateX(0px)' },
     delay: 600,
     config: config.molasses,
-  }));
-
-  const translate = useCallback((x) => `translateX(${x}px)`);
+  });
 
   return (
-    <Layout className="bg-anne bg-cover text-white">
-      <Header backText="ANNE PANTILLON" goText="TRAVAUX" goTo="/works" />
-      <div className="flex-grow grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 content-center">
-        <div className="px-2 col-span md:px-10 col-span-2 flex flex-col justify-center col-start-2">
-          <a.h1
-            style={{
-              opacity: first.opacity,
-              transform: first.transform.interpolate(translate),
-            }}
-            className="text-center text-5xl md:text-8xl text-white"
-          >
-            Actualités
-          </a.h1>
+    <Layout>
+      <div className="pb-4 text-white bg-cover bg-anne">
+        <Header backText="ANNE PANTILLON" goText="TRAVAUX" goTo="/works" reversedIcon={true} />
+        <div className="grid content-center flex-grow grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+          <div className="flex flex-col justify-center col-span-2 col-start-2 px-2 col-span md:px-10">
+            <a.h1 style={props} className="text-5xl text-center text-white md:text-8xl">
+              Actualités
+            </a.h1>
 
-          {news && (
-            <div className="grid grid-cols-1 md:grid-cols-4">
-              <Link /*href={`/posts/${news.slug}`}*/ href="/news">
-                <a className="col-start-2 col-span-2 p-4 pt-3 block shadow-xl bg-black bg-opacity-30 text-white">
-                  <Article html={news.html} />
-                </a>
-              </Link>
-            </div>
-          )}
+            {news && (
+              <div className="grid grid-cols-1 md:grid-cols-4">
+                <Link /*href={`/posts/${news.slug}`}*/ href="/news">
+                  <a className="block col-span-2 col-start-2 p-4 pt-3 text-white bg-black shadow-xl bg-opacity-30">
+                    <Article html={news.html} />
+                  </a>
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </Layout>
