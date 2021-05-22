@@ -10,7 +10,7 @@ import {
   FacebookIcon,
 } from 'react-share';
 
-const SocialIcons = ({title, url, className = '', ...rest}) => (
+const SocialIcons = ({ title, url, className = '', ...rest }) => (
   <div className={`flex ${className}`} {...rest}>
     <TwitterShareButton url={url} title={title} className="mr-2">
       <TwitterIcon size={25} round />
@@ -22,24 +22,23 @@ const SocialIcons = ({title, url, className = '', ...rest}) => (
       <FacebookIcon size={25} round />
     </FacebookShareButton>
   </div>
-)
+);
 
 const AButton = animated(Button);
 const ASocialIcons = animated(SocialIcons);
 
-const ShareButton = ({title, url, className = ''}) => {
-
+const ShareButton = ({ title, url, className = '' }) => {
   const [opened, setOpen] = useState(false);
-  const transitions = useTransition(opened, null, {
+  const transitions = useTransition(opened, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
-    leave: { opacity: 0, position: 'absolute',  },
+    leave: { opacity: 0, position: 'absolute' },
   });
 
   useEffect(() => {
-    if(!opened) return null;
+    if (!opened) return null;
     const close = () => setOpen(false);
-    const timer = setTimeout(close , 4 * 1000);
+    const timer = setTimeout(close, 4 * 1000);
     return () => clearTimeout(timer);
   }, [opened]);
 
@@ -49,7 +48,6 @@ const ShareButton = ({title, url, className = ''}) => {
       ? <ASocialIcons key={key} style={props} title={title} url={url} className={className} />
       : <AButton key={key} style={props} icon="share" onClick={() => setOpen(true)}  className={className} />
   );
-
-}
+};
 
 export default ShareButton;

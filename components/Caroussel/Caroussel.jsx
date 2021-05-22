@@ -37,10 +37,10 @@ const Caroussel = ({ serie, snap = true }) => {
           friction: 0.5,
         }}
       >
-        <div id={`${serie.id}-0`} className="h-full w-full px-2 md:px-14 grid grid-rows-2">
-          <div className="text-3xl md:text-5xl flex justify-center items-end">{serie.title}</div>
+        <div id={`${serie.id}-0`} className="grid w-full h-full grid-rows-2 px-2 md:px-14">
+          <div className="flex items-end justify-center text-3xl md:text-5xl">{serie.title}</div>
           <div className="flex flex-col items-center">
-            <div className="flex-grow grid grid-cols-1 md:grid-cols-3">
+            <div className="grid flex-grow grid-cols-1 md:grid-cols-3">
               <Article html={serie.html} hideFigure className="col-start-2 text-center" />
             </div>
             <TagList tags={serie.tags} />

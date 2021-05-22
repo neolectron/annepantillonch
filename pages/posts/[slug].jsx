@@ -10,11 +10,15 @@ const Post = ({ post }) => (
     <div className="p-8 mt-14 md:mt-0 md:mr-12">
       <Link href="/works">
         <a>
-          <Button asAnchor icon="left">Works</Button>
+          <Button asAnchor icon="left.svg">
+            Works
+          </Button>
         </a>
       </Link>
       <div className="flex flex-col gap-14">
-        <div className="p-8"><Article html={post?.html} /></div>
+        <div className="p-8">
+          <Article html={post?.html} />
+        </div>
       </div>
     </div>
   </Layout>
@@ -22,26 +26,23 @@ const Post = ({ post }) => (
 
 // Return a list of possible value for slug
 export async function getStaticPaths() {
-
   const postList = await getPostList();
-  
+
   return {
     paths: postList
-      .filter(item => item.slug) // filter-out Pagination data
-      .map(item => ({ params: { slug: item.slug } }) ),
-    fallback: false
-  }
+      .filter((item) => item.slug) // filter-out Pagination data
+      .map((item) => ({ params: { slug: item.slug } })),
+    fallback: false,
+  };
 }
 
 // Fetch necessary data for the blog post using params.slug
 export async function getStaticProps({ params }) {
-
   const post = await getPostBySlug(params.slug);
 
   return {
-    props: { post }
-  }
-
+    props: { post },
+  };
 }
 
 export default Post;

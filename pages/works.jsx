@@ -8,9 +8,7 @@ export default function Works({ pageList }) {
   return (
     <Layout title="Travaux" className="bg-white">
       <Header title="TRAVAUX" />
-      <div
-        className={`px-8 pb-8 min-h-screen flex flex-wrap justify-between items-center gap-4 w-full`}
-      >
+      <div className={`px-8 pb-8 min-h-screen flex flex-wrap justify-between items-center gap-4 w-full`}>
         {pageList.map((page) => (
           <Link key={page.id} href={`/${page.slug}`}>
             <a
