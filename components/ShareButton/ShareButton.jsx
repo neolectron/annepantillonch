@@ -1,7 +1,7 @@
 import Button from '../Button/Button.jsx';
 import { useEffect, useState } from 'react';
 import { animated, useTransition } from 'react-spring';
-import { 
+import {
   LinkedinShareButton,
   LinkedinIcon,
   TwitterShareButton,
@@ -42,11 +42,12 @@ const ShareButton = ({ title, url, className = '' }) => {
     return () => clearTimeout(timer);
   }, [opened]);
 
-
-  return transitions.map(({item, key, props}) => 
-    item 
-      ? <ASocialIcons key={key} style={props} title={title} url={url} className={className} />
-      : <AButton key={key} style={props} icon="share" onClick={() => setOpen(true)}  className={className} />
+  return transitions((props, item) =>
+    item ? (
+      <ASocialIcons style={props} title={title} url={url} className={className} />
+    ) : (
+      <AButton style={props} icon="share.svg" onClick={() => setOpen(true)} className={className} />
+    )
   );
 };
 

@@ -63,20 +63,20 @@ const Caroussel = ({ serie, snap = true }) => {
         <Cartel className="flex">
           <Button
             asAnchor
-            icon="email"
-            className=""
-            href={`mailto:atelier.annepantillon@gmail.com?body=A propos de ${
-              pos ? `l'œuvre ${pos} de ` : ' '
-            }la série ${serie.title}
-          ${isClient && location.href}`}
+            target="_blank"
+            icon="email.svg"
+            href={`mailto:atelier.annepantillon@gmail.com?body=A propos de ${pos ? `l'œuvre ${pos} de` : ''} la série ${
+              serie.title
+            } - ${isClient ? location.href : ''}`}
           />
         </Cartel>
       </div>
+
       {pos === serie.imgs.length && (
         <Button
           reversed
           className="flickity-button flickity-prev-next-button next"
-          icon="flickityArrow"
+          icon="flickityArrow.svg"
           iconClassName="flickity-button-icon"
           onClick={() => flickity.current.selectCell(0)}
         />

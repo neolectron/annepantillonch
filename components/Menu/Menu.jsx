@@ -84,28 +84,28 @@ const Menu = ({ children }) => {
               asAnchor
               target="_blank"
               href="https://www.linkedin.com/in/anne-pantillon-3b1b7468/"
-              icon="linkedin"
+              icon="linkedin.svg"
               className="m-2 ml-0 transform hover:scale-110"
             />
             <Button
               asAnchor
               target="_blank"
               href="https://www.instagram.com/anne_pantillon/"
-              icon="instagram"
+              icon="instagram.svg"
               className="m-2 transform hover:scale-110"
             />
             <Button
               asAnchor
               target="_blank"
               href="https://www.youtube.com/channel/UCJ7Zo_T1yTfsNVWu6REvi_w"
-              icon="youtube"
+              icon="youtube.svg"
               className="m-2 transform hover:scale-110"
             />
             <Button
               asAnchor
               target="_blank"
               href="https://www.facebook.com/atelier.anne.pantillon"
-              icon="facebook"
+              icon="facebook.svg"
               className="m-2 ml-0 transform hover:scale-110"
             />
           </div>
