@@ -1,41 +1,24 @@
 import Menu from '../../components/Menu/Menu.jsx';
 import Contact from '../../components/Contact/Contact.jsx';
 import Link from 'next/link';
-import { useState, useRef } from 'react';
-import { useClickAway, useKey } from 'react-use';
-import { useTransition, animated, config } from 'react-spring';
+import { useState } from 'react';
+import { useTransition, a } from 'react-spring';
+
+const AContact = a(Contact);
 
 const MenuContact = () => {
   const [show, set] = useState(false);
-  const contactRef = useRef(null);
+  const closeContact = () => set(false);
 
-  useClickAway(contactRef, () => set(false));
-  useKey('Escape', () => set(false));
-
-  const transitions = useTransition(show, null, {
-    from: { opacity: 0, transform: 'translate3d(100px,0,0)' },
-    enter: { opacity: 1, transform: 'translate3d(0px,0,0)' },
-    leave: { opacity: 0, transform: 'translate3d(100px,0,0)' },
-    config: config.slow,
+  const transitions = useTransition(show, {
+    from: { opacity: 0, x: 100 },
+    enter: { opacity: 1, x: 0 },
+    leave: { opacity: 0, x: -100 },
   });
 
   return (
     <>
-      {transitions.map(({ item, key, props }) => {
-        if (!item) return null;
-
-        return (
-          <animated.div
-            ref={contactRef}
-            key={key}
-            style={props}
-            className={`z-20 fixed top-0 right-0 w-full md:w-auto md:h-full`}
-          >
-            <Contact />
-          </animated.div>
-        );
-      })}
-
+      {transitions((props) => show && <AContact style={props} onClickAway={closeContact} onEscape={closeContact} />)}
       <Menu>
         <Link href="/">
           <a>ACCUEIL</a>
@@ -52,7 +35,7 @@ const MenuContact = () => {
         <Link href="/press">
           <a>PRESSE</a>
         </Link>
-        <a href="#" onClick={() => set((x) => !x)}>
+        <a href="#" onClick={() => set(true)}>
           CONTACT
         </a>
       </Menu>
