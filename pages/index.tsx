@@ -5,7 +5,11 @@ import { a, config, useSpring } from 'react-spring';
 import { getPageBySlug, getPostListFeatured } from '../lib/ghost.js';
 import Link from 'next/link';
 
-export default function Home({ news }) {
+interface HomePageProps {
+  news: any;
+}
+
+export default function Home({ news }: HomePageProps) {
   const props = useSpring({
     from: { opacity: 0, transform: 'translateX(-30px)' },
     to: { opacity: 1, transform: 'translateX(0px)' },
@@ -15,18 +19,18 @@ export default function Home({ news }) {
 
   return (
     <Layout>
-      <div className="pb-4 text-white bg-cover bg-anne">
+      <div className="bg-anne pb-4 text-white bg-cover">
         <Header backText="ANNE PANTILLON" goText="TRAVAUX" goTo="/works" reversedIcon={true} />
-        <div className="grid content-center flex-grow grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
-          <div className="flex flex-col justify-center col-span-2 col-start-2 px-2 col-span md:px-10">
-            <a.h1 style={props} className="text-5xl text-center text-white md:text-8xl">
+        <div className="md:grid-cols-3 lg:grid-cols-4 grid content-center flex-grow grid-cols-1">
+          <div className="col-span md:px-10 flex flex-col justify-center col-span-2 col-start-2 px-2">
+            <a.h1 style={props} className="md:text-8xl text-5xl text-center text-white">
               Actualités
             </a.h1>
 
             {news && (
-              <div className="grid grid-cols-1 md:grid-cols-4">
+              <div className="md:grid-cols-4 grid grid-cols-1">
                 <Link /*href={`/posts/${news.slug}`}*/ href="/news">
-                  <a className="block col-span-2 col-start-2 p-4 pt-3 text-white bg-black shadow-xl bg-opacity-30">
+                  <a className="bg-opacity-30 block col-span-2 col-start-2 p-4 pt-3 text-white bg-black shadow-xl">
                     <Article html={news.html} />
                   </a>
                 </Link>
@@ -45,9 +49,6 @@ export async function getStaticProps() {
   const [news] = await getPostListFeatured();
 
   return {
-    props: {
-      page: page || { imgs: [{ src: '/technique.png' }] },
-      news: news || null,
-    },
+    props: { page, news },
   };
 }

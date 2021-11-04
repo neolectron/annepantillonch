@@ -1,5 +1,5 @@
-import Menu from '../../components/Menu/Menu.jsx';
-import Contact from '../../components/Contact/Contact.jsx';
+import Menu from '../Menu/Menu.jsx';
+import Contact from '../Contact/Contact.jsx';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useTransition, a } from 'react-spring';
