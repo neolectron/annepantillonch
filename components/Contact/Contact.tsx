@@ -1,4 +1,4 @@
-import Button from '../Button/Button.jsx';
+import Button from '../Button/Button';
 import { useClickAway, useKey } from 'react-use';
 import { useRef } from 'react';
 

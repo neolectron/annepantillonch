@@ -1,33 +1,22 @@
-import Icon from '../Icon/Icon.jsx';
+import Icon from '../Icon/Icon';
 
-const Wrap = ({ asAnchor, children, ...rest }) =>
-  asAnchor ? <a {...rest}>{children}</a> : <button {...rest}>{children}</button>;
+interface ButtonProps {
+  children?: React.ReactNode;
+  text?: string;
+  icon?: string;
+  swaped?: boolean;
+  onClick?: () => void;
+}
 
-const Button = ({
-  icon,
-  reversed,
-  swaped,
-  children = null,
-  text = null,
-  asAnchor,
-  className = '',
-  iconClassName = '',
-  ...rest
-}) => {
-  return (
-    <Wrap
-      asAnchor={asAnchor}
-      className={
-        className ||
-        'flex items-center w-max uppercase text-2xl focus:outline-none transform transition-transform hover:scale-105 cursor-pointer'
-      }
-      {...rest}
-    >
-      {swaped || <Icon reversed={reversed} name={icon} className={iconClassName} />}
-      {text || children}
-      {swaped && <Icon reversed={reversed} name={icon} className={iconClassName} />}
-    </Wrap>
-  );
-};
+const Button = ({ icon, swaped, children, text, onClick }: ButtonProps) => (
+  <button
+    className="w-max focus:outline-none hover:scale-105 flex items-center text-2xl uppercase transition-transform transform cursor-pointer"
+    onClick={onClick}
+  >
+    {swaped || (icon && <Icon name={icon} />)}
+    {text || children}
+    {swaped && icon && <Icon name={icon} />}
+  </button>
+);
 
 export default Button;

@@ -1,4 +1,4 @@
-import Button from '../Button/Button.jsx';
+import Button from '../Button/Button';
 import { useEffect, useState } from 'react';
 import { animated, useTransition } from 'react-spring';
 import {
@@ -35,9 +35,13 @@ const ShareButton = ({ title, url, className = '' }) => {
     leave: { opacity: 0, position: 'absolute' },
   });
 
+  setTimeout(() => setOpen(false), 3000);
+
   useEffect(() => {
     if (!opened) return null;
+
     const close = () => setOpen(false);
+
     const timer = setTimeout(close, 4 * 1000);
     return () => clearTimeout(timer);
   }, [opened]);

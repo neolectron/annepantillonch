@@ -1,15 +1,15 @@
 import { getPageBySlug, getTagList, getPostListByTags } from '../lib/ghost';
-import Layout from '../components/Layout/Layout.jsx';
-import Button from '../components/Button/Button.jsx';
+import Layout from '../components/Layout/Layout';
+import Button from '../components/Button/Button';
 import Article from '../components/Article/Article';
-import Caroussel from '../components/Caroussel/Caroussel.jsx';
+import Caroussel from '../components/Caroussel/Caroussel';
 import Link from 'next/link';
 
 export default function Page({ series, article }) {
   return (
     <Layout title={article?.title}>
       <div className="flex flex-col">
-        <div className="grid grid-cols-1 px-2 md:px-10 md:grid-cols-3">
+        <div className="md:px-10 md:grid-cols-3 grid grid-cols-1 px-2">
           <div className="p-4">
             <Link href="/works">
               <Button asAnchor icon="left.svg" text="Travaux" />
@@ -22,7 +22,7 @@ export default function Page({ series, article }) {
             </div>
           )}
         </div>
-        <div className="flex flex-col ">
+        <div className=" flex flex-col">
           {series.map((serie, i) => (
             <Caroussel key={serie.id} serie={serie} snap={i} />
           ))}

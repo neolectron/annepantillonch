@@ -1,13 +1,13 @@
 import Image from 'next/image';
-import styles from './icon.module.css';
 
-const Icon = ({ name, reversed, width = 25, height = 25, className = '' }) => (
-  <Image
-    src={`/icons/${name}`}
-    className={className + ' ' + (reversed ? styles.reversed : '')}
-    width={width}
-    height={height}
-  />
+interface IconProps {
+  name: string;
+  width?: string | number;
+  height?: string | number;
+}
+
+const Icon = ({ name, width = 25, height = 25 }: IconProps) => (
+  <Image src={`/icons/${name}`} width={width} height={height} alt={`icon ${name}`} />
 );
 
 export default Icon;

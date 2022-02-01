@@ -1,4 +1,4 @@
-import Button from '../Button/Button.jsx';
+import Button from '../Button/Button';
 
 const Footer = ({ backTop = false }) => (
   <footer className="p-4">

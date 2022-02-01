@@ -1,21 +1,25 @@
-import Button from '../Button/Button.jsx';
+import ButtonLink from '../ButtonLink/ButtonLink';
 import Link from 'next/link';
+import type { linkType } from '../../types/link';
 
-const Header = ({ backTo, backText, title = null, goTo, goText, reversedIcon = false }) => (
+interface HeaderProps {
+  title?: string;
+  prev?: linkType;
+  next?: linkType;
+}
+
+const Header = ({ prev, next, title }: HeaderProps) => (
   <header className="grid items-center grid-cols-3 p-4 text-2xl">
-    {backTo && (
-      <Link href={backTo}>
-        <>
-          <Button asAnchor icon="left.svg" text={backText || 'Précédent'} reversed={reversedIcon} />
-        </>
+    {prev && (
+      <Link href={prev.href} passHref>
+        <ButtonLink icon="left.svg" text={prev.name || 'Précédent'} />
       </Link>
     )}
-    {!backTo && backText}
     {title && <div className="flex justify-center col-start-2">{title}</div>}
-    {goTo && (
-      <Link href={goTo}>
-        <div className="col-start-3 justify-self-end">
-          <Button asAnchor swaped icon="right.svg" text={goText || 'Suivant'} reversed={reversedIcon} />
+    {next && (
+      <Link href={next.href} passHref>
+        <div className="justify-self-end col-start-3">
+          <ButtonLink swaped icon="right.svg" text={next.name || 'Suivant'} />
         </div>
       </Link>
     )}

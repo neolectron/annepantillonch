@@ -1,8 +1,8 @@
 import React from 'react';
-import Layout from '../components/Layout/Layout.jsx';
+import Layout from '../components/Layout/Layout';
 import { getPageList, getTagList, findImageForPage } from '../lib/ghost.js';
 import Link from 'next/link';
-import Header from '../components/Header/Header.jsx';
+import Header from '../components/Header/Header';
 
 export default function Works({ pageList }) {
   return (

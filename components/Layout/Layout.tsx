@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import MenuContact from '../MenuContact/MenuContact.jsx';
+import MenuContact from '../MenuContact/MenuContact';
 
 const Layout = ({ title = 'Artiste Plasticienne', className = '', children }) => {
   const pageTitle = `Anne Pantillon - ${title}`;

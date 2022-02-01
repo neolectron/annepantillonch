@@ -1,20 +1,18 @@
 import { useEffect } from 'react';
-import styles from './article.module.css';
+import type { PostOrPageExtended } from '../../lib/ghost';
 
-const Article = ({html, className, hideFigure, ...rest}) => {
+interface ArticleProps {
+  article: PostOrPageExtended;
+}
 
+const Article = ({ article }: ArticleProps) => {
   useEffect(() => {
-    setTimeout(() => {
-      if (window.instgrm)
-        window.instgrm.Embeds.process();
-    }, 400)
+    // tslint:disable-next-line
+    setTimeout(() => window.instgrm && window.instgrm.Embeds.process(), 400);
   }, []);
 
-  return (
-    <article dangerouslySetInnerHTML={{ __html: html }}
-    className={`${styles.article} ${hideFigure ? styles.hideFigure : ''} ${className || ''}`}
-    {...rest} />
-  )
+  if (!article.html) return null;
+  return <article dangerouslySetInnerHTML={{ __html: article.html }} />;
 };
 
 export default Article;

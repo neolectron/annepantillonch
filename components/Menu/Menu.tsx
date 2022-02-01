@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useClickAway, useKey, useMedia } from 'react-use';
 import { a, useSpring, config } from 'react-spring';
-import Icon from '../Icon/Icon.jsx';
-import Button from '../Button/Button.jsx';
+import Icon from '../Icon/Icon';
+import ButtonLink from '../ButtonLink/ButtonLink';
 
 import styles from './menu.module.css';
 
@@ -70,34 +70,18 @@ const Menu = ({ children }) => {
             {children}
           </nav>
           <div className={`flex ml-14 mb-2 items-start justify-start`}>
-            <Button
-              asAnchor
+            <ButtonLink
               target="_blank"
               href="https://www.linkedin.com/in/anne-pantillon-3b1b7468/"
               icon="linkedin.svg"
-              className="hover:scale-110 m-2 ml-0 transform"
             />
-            <Button
-              asAnchor
-              target="_blank"
-              href="https://www.instagram.com/anne_pantillon/"
-              icon="instagram.svg"
-              className="hover:scale-110 m-2 transform"
-            />
-            <Button
-              asAnchor
+            <ButtonLink target="_blank" href="https://www.instagram.com/anne_pantillon/" icon="instagram.svg" />
+            <ButtonLink
               target="_blank"
               href="https://www.youtube.com/channel/UCJ7Zo_T1yTfsNVWu6REvi_w"
               icon="youtube.svg"
-              className="hover:scale-110 m-2 transform"
             />
-            <Button
-              asAnchor
-              target="_blank"
-              href="https://www.facebook.com/atelier.anne.pantillon"
-              icon="facebook.svg"
-              className="hover:scale-110 m-2 ml-0 transform"
-            />
+            <ButtonLink target="_blank" href="https://www.facebook.com/atelier.anne.pantillon" icon="facebook.svg" />
           </div>
         </div>
       </a.div>
