@@ -26,6 +26,7 @@
     "react-use": "^15.3.8"
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.2.1",
     "@types/node": "^17.0.14",
     "autoprefixer": "^10.4.2",
     "eslint-config-next": "^11.1.2",

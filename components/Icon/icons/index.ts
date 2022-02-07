@@ -1,0 +1,12 @@
+export { default as burger } from './burger.svg';
+export { default as up } from './up.svg';
+export { default as down } from './down.svg';
+export { default as left } from './left.svg';
+export { default as right } from './right.svg';
+export { default as facebook } from './facebook.svg';
+export { default as instagram } from './instagram.svg';
+export { default as linkedin } from './linkedin.svg';
+export { default as youtube } from './youtube.svg';
+export { default as share } from './share.svg';
+export { default as email } from './email.svg';
+export { default as flickityArrow } from './flickityArrow.svg';
