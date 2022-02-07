@@ -60,7 +60,7 @@ const Menu = ({ children }) => {
       ref={menuRef}
     >
       <div className="h-14 flex w-full p-2 pt-3 pl-2">
-        <Icon name="burger.svg" width="32" height="32" className="hover:scale-110 transform cursor-pointer" />
+        <Icon name="burger.svg" width="32" height="32" />
       </div>
 
       {/* Menu Items List */}

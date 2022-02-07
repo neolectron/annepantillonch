@@ -10,8 +10,8 @@ import {
   FacebookIcon,
 } from 'react-share';
 
-const SocialIcons = ({ title, url, className = '', ...rest }) => (
-  <div className={`flex ${className}`} {...rest}>
+const SocialIcons = ({ title, url, ...rest }) => (
+  <div className={`flex`} {...rest}>
     <TwitterShareButton url={url} title={title} className="mr-2">
       <TwitterIcon size={25} round />
     </TwitterShareButton>
@@ -27,7 +27,7 @@ const SocialIcons = ({ title, url, className = '', ...rest }) => (
 const AButton = animated(Button);
 const ASocialIcons = animated(SocialIcons);
 
-const ShareButton = ({ title, url, className = '' }) => {
+const ShareButton = ({ title, url }) => {
   const [opened, setOpen] = useState(false);
   const transitions = useTransition(opened, {
     from: { opacity: 0 },
@@ -48,9 +48,9 @@ const ShareButton = ({ title, url, className = '' }) => {
 
   return transitions((props, item) =>
     item ? (
-      <ASocialIcons style={props} title={title} url={url} className={className} />
+      <ASocialIcons style={props} title={title} url={url} />
     ) : (
-      <AButton style={props} icon="share.svg" onClick={() => setOpen(true)} className={className} />
+      <AButton style={props} icon="share.svg" onClick={() => setOpen(true)} />
     )
   );
 };
