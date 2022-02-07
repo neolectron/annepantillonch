@@ -1,15 +1,15 @@
 module.exports = {
-  purge: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./components/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'media',
   theme: {
     extend: {
       fontSize: {
-        'xl': '1.3rem'
-      }
-    }
+        xl: '1.3rem',
+      },
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};
