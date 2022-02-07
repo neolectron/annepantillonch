@@ -1,4 +1,4 @@
-import { getPageBySlug } from '../lib/ghost.js';
+import { getPageBySlug } from '../lib/ghost';
 import Layout from '../components/Layout/Layout';
 import Article from '../components/Article/Article';
 import Navbar from '../components/Navbar/Navbar';

@@ -1,4 +1,4 @@
-import { getPostListByTags } from '../lib/ghost.js';
+import { getPostListByTags } from '../lib/ghost';
 import Layout from '../components/Layout/Layout';
 import Article from '../components/Article/Article';
 

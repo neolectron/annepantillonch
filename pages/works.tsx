@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout';
-import { getPageList, getTagList, findImageForPage } from '../lib/ghost.js';
+import { getPageList, getTagList, findImageForPage } from '../lib/ghost';
 import Link from 'next/link';
 import Navbar from '../components/Navbar/Navbar';
 
