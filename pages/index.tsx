@@ -1,6 +1,5 @@
 import Layout from '../components/Layout/Layout';
 import Article from '../components/Article/Article';
-import Header from '../components/Header/Header';
 import { a, config, useSpring } from 'react-spring';
 import { getPageBySlug, getPostListFeatured, PostOrPageExtended } from '../lib/ghost';
 import Link from 'next/link';

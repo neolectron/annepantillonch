@@ -1,18 +1,23 @@
 import ButtonLink from '../ButtonLink/ButtonLink';
 import Link from 'next/link';
 import type { linkType } from '../../types/link';
+import clsx from 'clsx';
 
-interface HeaderProps {
-  title?: string;
-  prev?: linkType;
-  next?: linkType;
+interface NavbarProps {
+  title?: string | undefined;
+  prev?: linkType | undefined;
+  next?: linkType | undefined;
 }
 
-const Header = ({ prev, next, title }: HeaderProps) => (
-  <header className="grid items-center grid-cols-3 p-4 text-2xl">
+const Navbar = ({ prev, next, title }: NavbarProps) => (
+  <nav
+    className={clsx('grid items-center grid-cols-3 p-4 text-2xl uppercase', {
+      'text-white': prev?.href === '/',
+    })}
+  >
     {prev && (
       <Link href={prev.href} passHref>
-        <ButtonLink icon="left.svg" text={prev.name || 'Précédent'} />
+        <ButtonLink icon={prev.href === '/' ? '' : 'left.svg'} text={prev.name || 'Précédent'} />
       </Link>
     )}
     {title && <div className="flex justify-center col-start-2">{title}</div>}
@@ -23,7 +28,7 @@ const Header = ({ prev, next, title }: HeaderProps) => (
         </div>
       </Link>
     )}
-  </header>
+  </nav>
 );
 
-export default Header;
+export default Navbar;

@@ -2,12 +2,12 @@ import React from 'react';
 import Layout from '../components/Layout/Layout';
 import { getPageList, getTagList, findImageForPage } from '../lib/ghost.js';
 import Link from 'next/link';
-import Header from '../components/Header/Header';
+import Navbar from '../components/Navbar/Navbar';
 
 export default function Works({ pageList }) {
   return (
     <Layout title="Travaux" className="bg-white">
-      <Header title="TRAVAUX" />
+      <Navbar title="TRAVAUX" />
       <div className={`px-8 pb-8 min-h-screen flex flex-wrap justify-between items-center gap-4 w-full`}>
         {pageList.map((page) => (
           <Link key={page.id} href={`/${page.slug}`}>
