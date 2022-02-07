@@ -7,51 +7,5 @@ html,
 body,
 #__next {
   font-family: 'Sorts Mill Goudy', serif;
-  height: 100%;
-  scroll-snap-type: y proximity;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-.bg-anne {
-  background-image: url('/technique.png');
-}
-
-.bg-zoom {
-  background-size: 100%;
-  transition-property: background-size;
-}
-
-.bg-zoom:hover {
-  background-size: 110%;
-}
-
-.bg-pulse {
-  animation: pulse 25s linear 1s infinite alternate;
-}
-
-.snap-start {
-  scroll-snap-align: start;
-}
-
-.alternate-bg:nth-child(even) {
-  background-color: white;
-}
-
-/* anti con */
-.undefined {
-  outline: dashed red !important;
-  color: red !important;
-  background-color: red !important;
-}
-
-@keyframes pulse {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.25);
-  }
+  min-height: 100vh;
 }
