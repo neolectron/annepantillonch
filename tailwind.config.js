@@ -4,12 +4,12 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        'xl': '1.3rem'
-      }
-    }
+        xl: '1.3rem',
+      },
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};
