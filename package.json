@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^0.1.5",
     "@tryghost/content-api": "^1.4.10",
     "flickity": "^2.2.2",
     "flickity-fade": "^1.0.0",
