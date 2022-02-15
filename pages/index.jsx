@@ -17,24 +17,25 @@ export default function Home({ page, news }) {
   const translate = useCallback((x) => `translateX(${x}px)`);
 
   return (
-    <Layout className="bg-anne bg-cover text-white">
+    <Layout className="bg-anne text-white bg-cover">
       <Header backText="ANNE PANTILLON" goText="TRAVAUX" goTo="/works" />
-      <div className="flex-grow grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 content-center">
-        <div className="px-2 col-span md:px-10 col-span-2 flex flex-col justify-center col-start-2">
+      <div className="md:grid-cols-3 lg:grid-cols-4 grid content-center flex-grow grid-cols-1">
+        <div className="col-span md:px-10 flex flex-col justify-center col-span-2 col-start-2 px-2">
           <a.h1
             style={{
               opacity: first.opacity,
               transform: first.transform.interpolate(translate),
             }}
-            className="text-center text-5xl md:text-8xl text-white"
+            className="md:text-8xl text-5xl text-center text-white"
           >
             Actualités
           </a.h1>
 
           {news && (
-            <div className="grid grid-cols-1 md:grid-cols-4">
+            <div className="md:grid-cols-4 grid grid-cols-1">
               <Link /*href={`/posts/${news.slug}`}*/ href="/news">
-                <a className="col-start-2 col-span-2 p-4 pt-3 block shadow-xl bg-black bg-opacity-30 text-white">
+                <a className="bg-opacity-30 block col-span-2 col-start-2 p-4 pt-3 text-white bg-black shadow-xl">
+                  <h1 className="mb-6 text-3xl">{news.title}</h1>
                   <Article html={news.html} />
                 </a>
               </Link>
