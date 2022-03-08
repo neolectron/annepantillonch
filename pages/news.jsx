@@ -8,9 +8,16 @@ const NewsPage = ({ news }) => (
   <Layout title={'news'}>
     <Header backTo="/" backText="ACCUEIL" />
     {news?.map((article) => (
-      <div className="grid grid-cols-1 px-2 py-10 my-4 md:px-10 md:grid-cols-3 alternate-bg">
-        <Article html={article.html} className="md:col-start-2" />
-      </div>
+      <>
+        <div
+          className="md:px-10 max-w-3xl px-2 py-10 my-4 ml-32"
+          key={article.id}
+        >
+          <h1 className="mb-6 text-3xl">{article.title}</h1>
+          <Article html={article.html} className={'w-full'} />
+        </div>
+        <hr className="mx-20 border-b border-gray-600" />
+      </>
     ))}
   </Layout>
 );
