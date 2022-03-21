@@ -3,6 +3,7 @@ import Article from '../components/Article/Article';
 import { a, config, useSpring } from 'react-spring';
 import { getPageBySlug, getPostListFeatured, PostOrPageExtended } from '../lib/ghost';
 import Link from 'next/link';
+import Navbar from '../components/Navbar/Navbar';
 
 interface HomePageProps {
   news: PostOrPageExtended;
@@ -19,8 +20,8 @@ export default function Home({ news, homePage }: HomePageProps) {
 
   return (
     <Layout>
-      <div className="bg-anne pb-4 text-white bg-cover">
-        <Header prev={{ href: '/', name: 'ANNE PANTILLON' }} next={{ href: '/works', name: 'TRAVAUX' }} />
+      <div className="bg-anne pb-4 text-white bg-black bg-cover">
+        <Navbar prev={{ href: '/', name: 'ANNE PANTILLON' }} next={{ href: '/works', name: 'TRAVAUX' }} />
         <div className="md:grid-cols-3 lg:grid-cols-4 grid content-center flex-grow grid-cols-1">
           <div className="col-span md:px-10 flex flex-col justify-center col-span-2 col-start-2 px-2">
             <a.h1 style={props} className="md:text-8xl text-5xl text-center text-white">
