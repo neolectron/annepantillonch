@@ -6,7 +6,7 @@ import Article from '../../components/Article/Article';
 import Link from 'next/link';
 
 const Post = ({ post }) => (
-  <Layout column title={`Anne Pantillon - ${post.title}`}>
+  <Layout title={`Anne Pantillon - ${post.title}`}>
     <div className="mt-14 md:mt-0 md:mr-12 p-8">
       <Link href="/works">
         <a>

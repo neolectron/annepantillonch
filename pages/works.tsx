@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar/Navbar';
 
 export default function Works({ pageList }) {
   return (
-    <Layout title="Travaux" className="bg-white">
+    <Layout title="Travaux">
       <Navbar title="TRAVAUX" />
       <div className={`px-8 pb-8 min-h-screen flex flex-wrap justify-between items-center gap-4 w-full`}>
         {pageList.map((page) => (

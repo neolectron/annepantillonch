@@ -1,7 +1,12 @@
 import Head from 'next/head';
 import MenuContact from '../MenuContact/MenuContact';
 
-const Layout = ({ title = 'Artiste Plasticienne', className = '', children }) => {
+interface LayoutProps {
+  title?: string;
+  children: React.ReactNode;
+}
+
+const Layout = ({ title = 'Artiste Plasticienne', children }: LayoutProps) => {
   const pageTitle = `Anne Pantillon - ${title}`;
 
   return (
@@ -11,7 +16,7 @@ const Layout = ({ title = 'Artiste Plasticienne', className = '', children }) =>
         <meta property="og:title" content={pageTitle} key="title" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={className || 'flex-grow flex flex-col mt-14 md:mt-0 md:mr-12'}>{children}</main>
+      <main className={'flex-grow flex flex-col mt-14 md:mt-0 md:mr-12'}>{children}</main>
       <MenuContact />
     </div>
   );
