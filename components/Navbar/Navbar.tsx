@@ -22,11 +22,11 @@ const Navbar = ({ prev, next, title }: NavbarProps) => (
     )}
     {title && <div className="flex justify-center col-start-2">{title}</div>}
     {next && (
-      <Link href={next.href} passHref>
-        <div className="justify-self-end col-start-3">
+      <div className="justify-self-end col-start-3">
+        <Link href={next.href} passHref>
           <ButtonLink swaped icon="right.svg" text={next.name || 'Suivant'} />
-        </div>
-      </Link>
+        </Link>
+      </div>
     )}
   </nav>
 );
