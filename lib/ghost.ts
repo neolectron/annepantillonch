@@ -79,7 +79,7 @@ const getPageBySlug = (slug: string) =>
   api.pages
     .read({ slug })
     .then((post) => decoratePost(post))
-    .catch(() => null);
+    .catch(errorHandler);
 
 const getTagList = () => api.tags.browse({ limit: 'all' }).catch(errorHandler);
 
