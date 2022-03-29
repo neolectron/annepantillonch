@@ -10,13 +10,13 @@ const Layout = ({ title = 'Artiste Plasticienne', children }: LayoutProps) => {
   const pageTitle = `Anne Pantillon - ${title}`;
 
   return (
-    <div className="flex flex-col min-h-full bg-gray-100">
+    <div className="min-h-screen bg-gray-100">
       <Head>
         <title>{pageTitle}</title>
         <meta property="og:title" content={pageTitle} key="title" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={'flex-grow flex flex-col mt-14 md:mt-0 md:mr-12'}>{children}</main>
+      <main className="mt-14 md:mt-0 md:mr-12 flex flex-col min-h-screen">{children}</main>
       <MenuContact />
     </div>
   );

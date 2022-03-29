@@ -20,7 +20,7 @@ export default function Home({ news, homePage }: HomePageProps) {
 
   return (
     <Layout>
-      <div className="bg-anne pb-4 text-white bg-black bg-cover">
+      <div className="bg-anne flex-grow pb-4 text-white bg-cover">
         <Navbar prev={{ href: '/', name: 'ANNE PANTILLON' }} next={{ href: '/works', name: 'TRAVAUX' }} />
         <div className="md:grid-cols-3 lg:grid-cols-4 grid content-center flex-grow grid-cols-1">
           <div className="col-span md:px-10 flex flex-col justify-center col-span-2 col-start-2 px-2">
